@@ -5,6 +5,7 @@ import java.io.Serializable;
 /*
 *Classe abstracta Ingrediente que serve de base para os diferentes tipos
 *de ingrediente
+*Implementa Serializable para ser possivel guardar as receitas em ficheiro binário
  */
 public abstract class Ingrediente implements Serializable {
 

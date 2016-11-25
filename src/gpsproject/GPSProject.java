@@ -15,7 +15,12 @@ public class GPSProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        int i = 70;
+
+        float x = (float) 70 / 100;
+
+        int c = 230 * (70 / 100);
+        System.out.println(c);
     }
-    
+
 }
