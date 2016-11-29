@@ -10,5 +10,9 @@ public interface Variables {
     public String TIPO_PEIXE = "PEIXE";
     public String TIPO_VEGETAL = "VEGETAL";
     public String TIPO_FRUTA = "FRUTA";
+    public String TIPO_CEREAL = "CEREAL";
+    public String TIPO_LACTICINIOS = "LACTICINIOS";
+    public String TIPO_LEGUMINOSAS = "LEGUMINOSAS";
+    public String TIPO_OLEOS = "OLEOS";
 
 }

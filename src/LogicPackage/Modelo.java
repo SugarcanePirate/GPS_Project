@@ -29,6 +29,14 @@ public class Modelo implements Variables {
             obj = new Vegetal(nome, calorias, 0);
         } else if (tipo.equalsIgnoreCase(TIPO_FRUTA)) {
             obj = new Fruta(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_CEREAL)) {
+            obj = new Cereal(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_LACTICINIOS)) {
+            obj = new Lacticinios(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_LEGUMINOSAS)) {
+            obj = new Leguminosas(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_OLEOS)) {
+            obj = new Oleos(nome, calorias, 0);
         }
 
         if (obj == null) {
@@ -37,7 +45,6 @@ public class Modelo implements Variables {
 
         return livroReceitas.adicionaIngrediente(obj);
     }
-
 
     /*
     *Método para guardar informação das receitas numa directoria
