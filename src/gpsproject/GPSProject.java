@@ -5,6 +5,10 @@
  */
 package gpsproject;
 
+import LogicPackage.ReceitaCompativel;
+import java.util.ArrayList;
+import java.util.Collections;
+
 /**
  *
  * @author David
@@ -15,12 +19,7 @@ public class GPSProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int i = 70;
 
-        float x = (float) 70 / 100;
-
-        int c = 230 * (70 / 100);
-        System.out.println(c);
     }
 
 }
