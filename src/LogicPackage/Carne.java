@@ -9,4 +9,16 @@ public class Carne extends Ingrediente {
         super(nome, calorias, quantidade);
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (!(o instanceof Carne)) {
+            return false;
+        }
+
+        Carne carne = (Carne) o;
+
+        return carne.getNome().equals(super.getNome());
+    }
+
 }

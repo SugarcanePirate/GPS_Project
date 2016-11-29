@@ -9,4 +9,16 @@ public class Fruta extends Ingrediente {
         super(nome, calorias, quantidade);
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (!(o instanceof Fruta)) {
+            return false;
+        }
+
+        Fruta fruta = (Fruta) o;
+
+        return fruta.getNome().equals(super.getNome());
+    }
+
 }

@@ -12,9 +12,12 @@ import java.util.Collections;
 public class LivroReceitas implements Serializable {
 
     private ArrayList<Receita> receitas; //ArrayList com receitas do programa
+    private ArrayList<Ingrediente> ingredientes;
+    private String[] tipoIngredientes;
 
     public LivroReceitas() {
         receitas = new ArrayList<>();
+        ingredientes = new ArrayList<>();
     }
 
     /*
@@ -56,10 +59,33 @@ public class LivroReceitas implements Serializable {
     }
 
     /*
+    *Método para adicionar ingredientes á lista de ingredientes disponiveis
+     */
+    public boolean adicionaIngrediente(Ingrediente ingrediente) {
+        for (Ingrediente i : ingredientes) {
+            if (i.equals(ingrediente)) {
+                return false;
+            }
+        }
+
+        ingredientes.add(ingrediente);
+
+        return true;
+    }
+
+    /*
     *Getters para as informações do LivroReceitas
      */
     public ArrayList<Receita> getReceitas() {
         return receitas;
+    }
+
+    public ArrayList<Ingrediente> getIngredientes() {
+        return ingredientes;
+    }
+
+    public String[] getTipoIngredientes() {
+        return tipoIngredientes;
     }
 
     /*

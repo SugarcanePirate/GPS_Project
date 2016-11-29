@@ -7,16 +7,37 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class Modelo {
-
-    public static final String DIRECTORIA = "5 minute chef";
-    public static final String LIVRO_RECEITAS = "Livro de receitas";
+public class Modelo implements Variables {
 
     private LivroReceitas livroReceitas;
 
     public Modelo() {
         livroReceitas = new LivroReceitas();
     }
+
+    /*
+    *Método para adicionar um novo ingrediente á lista de ingredientes disponiveis
+     */
+    public boolean adicionaIngrediente(String tipo, String nome, int calorias) {
+        Ingrediente obj = null;
+
+        if (tipo.equalsIgnoreCase(TIPO_CARNE)) {
+            obj = new Carne(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_PEIXE)) {
+            obj = new Peixe(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_VEGETAL)) {
+            obj = new Vegetal(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_FRUTA)) {
+            obj = new Fruta(nome, calorias, 0);
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
+        return livroReceitas.adicionaIngrediente(obj);
+    }
+
 
     /*
     *Método para guardar informação das receitas numa directoria

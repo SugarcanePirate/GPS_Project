@@ -9,4 +9,16 @@ public class Peixe extends Ingrediente {
         super(nome, calorias, quantidade);
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (!(o instanceof Peixe)) {
+            return false;
+        }
+
+        Peixe peixe = (Peixe) o;
+
+        return peixe.getNome().equals(super.getNome());
+    }
+
 }
