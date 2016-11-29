@@ -30,6 +30,34 @@ public class Receita implements Serializable {
     }
 
     /*
+    *Método para comparar uma lista de ingredientes (usado na pesqusa de receitas)
+    *com os ingredientes da receita
+     */
+    public int comparaIngredientes(String[] ing) {
+        int x = 0;
+        for (Ingrediente i : ingredientes) {
+            for (int j = 0; j < ing.length; j++) {
+                if (i.getNome().equals(ing[j])) {
+                    x++;
+                }
+            }
+        }
+
+        int percentagem;
+        if (x == 0) {
+            percentagem = 0;
+        } else if (x == ingredientes.size()) {
+            percentagem = 100;
+        } else if (x < ingredientes.size()) {
+            percentagem = (x * 100) / ingredientes.size();
+        } else {
+            percentagem = (ingredientes.size() * 100) / ing.length;
+        }
+
+        return percentagem;
+    }
+
+    /*
     *Getters para as propriedades da receita
      */
     public String getNome() {
