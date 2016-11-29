@@ -3,8 +3,6 @@ package LogicPackage;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import javafx.util.Pair;
 
 /*
 *Classe LivroReceitas, que guarda as receitas do programa
@@ -62,6 +60,13 @@ public class LivroReceitas implements Serializable {
      */
     public ArrayList<Receita> getReceitas() {
         return receitas;
+    }
+
+    /*
+    *Setters para as propriedades do Livro de Receitas
+     */
+    public void setReceitas(ArrayList<Receita> receitas) {
+        this.receitas = receitas;
     }
 
 }

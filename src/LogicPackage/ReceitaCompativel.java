@@ -1,6 +1,8 @@
 package LogicPackage;
 
-public class ReceitaCompativel implements Comparable<ReceitaCompativel> {
+import java.io.Serializable;
+
+public class ReceitaCompativel implements Comparable<ReceitaCompativel>, Serializable {
 
     private Receita receita;
     private int percentagem;
