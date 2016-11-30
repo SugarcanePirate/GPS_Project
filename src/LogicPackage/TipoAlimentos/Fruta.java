@@ -1,4 +1,6 @@
-package LogicPackage;
+package LogicPackage.TipoAlimentos;
+
+import LogicPackage.Ingrediente;
 
 /*
 *Classe Fruta extende a classe abstracta Ingrediente

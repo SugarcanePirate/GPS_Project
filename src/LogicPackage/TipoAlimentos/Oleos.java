@@ -1,4 +1,6 @@
-package LogicPackage;
+package LogicPackage.TipoAlimentos;
+
+import LogicPackage.Ingrediente;
 
 public class Oleos extends Ingrediente {
 

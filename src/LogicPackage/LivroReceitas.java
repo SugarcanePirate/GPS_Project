@@ -9,11 +9,10 @@ import java.util.Collections;
 *Implementa os métodos de pesquisa de receitas e de adicionar receitas
 *Implementa Serializable para ser possivel guardar as receitas em ficheiro binário
  */
-public class LivroReceitas implements Serializable {
+public class LivroReceitas implements Serializable, Variables {
 
     private ArrayList<Receita> receitas; //ArrayList com receitas do programa
-    private ArrayList<Ingrediente> ingredientes;
-    private String[] tipoIngredientes;
+    private ArrayList<Ingrediente> ingredientes; //ArrayList com ingredientes
 
     public LivroReceitas() {
         receitas = new ArrayList<>();
@@ -25,16 +24,15 @@ public class LivroReceitas implements Serializable {
     *Retorna false caso já exista uma receita com o mesmo nome, ou true caso
     *a receita seja adicionada
      */
-    public boolean adicionaReceita(String nome, ArrayList<Ingrediente> ingredientes, int nPessoas, String passos) {
+    public boolean adicionaReceita(Receita receita) {
 
         for (Receita r : receitas) {
-            if (r.getNome().equals(nome)) {
+            if (r.getNome().equals(receita.getNome())) {
                 return false;
             }
         }
 
-        Receita r = new Receita(nome, ingredientes, nPessoas, passos);
-        receitas.add(r);
+        receitas.add(receita);
 
         return true;
     }
@@ -82,10 +80,6 @@ public class LivroReceitas implements Serializable {
 
     public ArrayList<Ingrediente> getIngredientes() {
         return ingredientes;
-    }
-
-    public String[] getTipoIngredientes() {
-        return tipoIngredientes;
     }
 
     /*

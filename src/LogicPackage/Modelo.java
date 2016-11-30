@@ -1,12 +1,18 @@
 package LogicPackage;
 
+import LogicPackage.TipoAlimentos.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
+
+/*
+*Classe responsável pela ligação entre o livro de receitas e a GUI
+ */
 public class Modelo implements Variables {
 
     private LivroReceitas livroReceitas;
@@ -44,6 +50,16 @@ public class Modelo implements Variables {
         }
 
         return livroReceitas.adicionaIngrediente(obj);
+    }
+
+    /*
+    *Método para adicionar uma nova receita á lista de receitas
+     */
+    public boolean adicionaReceitas(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+
+        Receita receita = new Receita(nome, ingredientes, pessoas, passos);
+
+        return livroReceitas.adicionaReceita(receita);
     }
 
     /*
