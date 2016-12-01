@@ -45,22 +45,21 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="382" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="bInicial" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="bListar" min="-2" max="-2" attributes="0"/>
-                              <Component id="bProcura" min="-2" pref="137" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="395" max="-2" attributes="0"/>
                           <Component id="lTitle" min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="392" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="bProcurar" pref="137" max="32767" attributes="0"/>
+                              <Component id="bListar" alignment="0" max="32767" attributes="0"/>
+                              <Component id="bAdicionar" alignment="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="404" max="32767" attributes="0"/>
+                  <EmptySpace pref="406" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -70,31 +69,37 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="lTitle" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace pref="260" max="32767" attributes="0"/>
-                  <Component id="bInicial" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="bProcura" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="bListar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="bProcurar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="bAdicionar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="bInicial">
+        <Component class="javax.swing.JButton" name="bListar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="ButtonInicial (A MUDAR)"/>
+            <Property name="label" type="java.lang.String" value="Listar Receitas"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="bProcura">
+        <Component class="javax.swing.JButton" name="bProcurar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Procurar Receitas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bProcurarActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bListar">
+        <Component class="javax.swing.JButton" name="bAdicionar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Adicionar Receitas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAdicionarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lTitle">
           <Properties>

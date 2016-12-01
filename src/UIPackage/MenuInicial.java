@@ -1,19 +1,16 @@
 
 package UIPackage;
 
-import javax.swing.*;
-
-import java.awt.*;
-
-import java.awt.event.*;
+import LogicPackage.LivroReceitas;
 
 public class MenuInicial extends javax.swing.JFrame {
-
+    LivroReceitas l;
     /**
      * Creates new form MenuInicial
      */
     public MenuInicial() {
         initComponents();
+        l  = new LivroReceitas();
     }
   
     /**
@@ -26,20 +23,30 @@ public class MenuInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        bInicial = new javax.swing.JButton();
-        bProcura = new javax.swing.JButton();
         bListar = new javax.swing.JButton();
+        bProcurar = new javax.swing.JButton();
+        bAdicionar = new javax.swing.JButton();
         lTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 550));
         setSize(new java.awt.Dimension(950, 550));
 
-        bInicial.setText("ButtonInicial (A MUDAR)");
+        bListar.setLabel("Listar Receitas");
 
-        bProcura.setText("Procurar Receitas");
+        bProcurar.setText("Procurar Receitas");
+        bProcurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bProcurarActionPerformed(evt);
+            }
+        });
 
-        bListar.setText("Adicionar Receitas");
+        bAdicionar.setText("Adicionar Receitas");
+        bAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAdicionarActionPerformed(evt);
+            }
+        });
 
         lTitle.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lTitle.setText("5-Min Chef");
@@ -49,18 +56,17 @@ public class MenuInicial extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(382, 382, 382)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bInicial)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bListar)
-                            .addComponent(bProcura, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(395, 395, 395)
+                        .addComponent(lTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(lTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(404, Short.MAX_VALUE))
+                        .addGap(392, 392, 392)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(bListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(406, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -68,11 +74,11 @@ public class MenuInicial extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addComponent(lTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
-                .addComponent(bInicial)
-                .addGap(18, 18, 18)
-                .addComponent(bProcura)
-                .addGap(18, 18, 18)
                 .addComponent(bListar)
+                .addGap(18, 18, 18)
+                .addComponent(bProcurar)
+                .addGap(18, 18, 18)
+                .addComponent(bAdicionar)
                 .addGap(68, 68, 68))
         );
 
@@ -89,6 +95,20 @@ public class MenuInicial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProcurarActionPerformed
+        // TODO add your handling code here:
+        ProcurarReceita pr = new ProcurarReceita();
+        pr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bProcurarActionPerformed
+
+    private void bAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAdicionarActionPerformed
+        // TODO add your handling code here:
+        InserirReceita ir = new InserirReceita();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bAdicionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,9 +147,9 @@ public class MenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bInicial;
+    private javax.swing.JButton bAdicionar;
     private javax.swing.JButton bListar;
-    private javax.swing.JButton bProcura;
+    private javax.swing.JButton bProcurar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lTitle;
     // End of variables declaration//GEN-END:variables
