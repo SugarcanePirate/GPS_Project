@@ -69,12 +69,6 @@
                               <Component id="lingredientesselecionados" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lmetododepreparacao" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="bProcurarReceitas" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="bEliminarIngrediente" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="pIngredientesSelecionados" alignment="0" max="32767" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lTituloReceita" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="lnºpessoas" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -83,24 +77,30 @@
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="textFildTituloReceita" min="-2" pref="137" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="textFildnºpessoas" max="32767" attributes="0"/>
+                                          <Component id="textFildnpessoas" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
+                              <Component id="bEliminarIngrediente" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="302" max="32767" attributes="0"/>
+                          <EmptySpace pref="288" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lupoadImagem" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="bUpload" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="lingredientesDisponiveis" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="bAcrescentarReceita" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" alignment="1" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jTextField1" pref="73" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="bAcrescentarIngrediente" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -142,7 +142,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lnºpessoas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFildnºpessoas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="textFildnpessoas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -152,20 +152,16 @@
                       <Component id="lingredientesDisponiveis" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="pIngredientesSelecionados" min="-2" pref="142" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="bProcurarReceitas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="bEliminarIngrediente" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="bAcrescentarReceita" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="147" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="bAcrescentarIngrediente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="bEliminarIngrediente" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="lmetododepreparacao" min="-2" max="-2" attributes="0"/>
@@ -177,7 +173,7 @@
                       <Component id="bEliminarReceita" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bVoltarAtras" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -226,8 +222,6 @@
             <Property name="text" type="java.lang.String" value="M&#xe9;todo de Prepara&#xe7;&#xe3;o:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="pIngredientesSelecionados">
-        </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -235,16 +229,10 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="listIngredientesDisponiveis">
+            <Component class="javax.swing.JList" name="lstIngDisp">
               <Properties>
-                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection component="boxTipoIngrediente" name="getModel" type="method"/>
                 </Property>
               </Properties>
               <AuxValues>
@@ -253,11 +241,6 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="bProcurarReceitas">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Procurar Receitas"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="bEliminarIngrediente">
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar Ingrediente"/>
@@ -266,10 +249,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarIngredienteActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bAcrescentarReceita">
+        <Component class="javax.swing.JButton" name="bAcrescentarIngrediente">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Acrescentar Receita"/>
+            <Property name="text" type="java.lang.String" value="Acrescentar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAcrescentarIngredienteActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
           <AuxValues>
@@ -303,19 +289,26 @@
         </Component>
         <Component class="javax.swing.JTextField" name="textFildTituloReceita">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFildn&#xba;pessoas">
+        <Component class="javax.swing.JTextField" name="textFildnpessoas">
         </Component>
         <Component class="javax.swing.JComboBox" name="boxTipoIngrediente">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="8">
+                <StringItem index="0" value="Carne"/>
+                <StringItem index="1" value="Peixe"/>
+                <StringItem index="2" value="Vegetal"/>
+                <StringItem index="3" value="Fruta"/>
+                <StringItem index="4" value="Cereal"/>
+                <StringItem index="5" value="Lacticinios"/>
+                <StringItem index="6" value="Leguminosas"/>
+                <StringItem index="7" value="Oleos"/>
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boxTipoIngredienteActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -328,6 +321,41 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bUploadActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="jLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gramas:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <Properties>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
+        </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JList" name="lstIngSelec">
+              <Properties>
+                <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                    <StringItem index="4" value="Item 5"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>

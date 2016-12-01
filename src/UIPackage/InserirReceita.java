@@ -5,18 +5,29 @@
  */
 package UIPackage;
 
+import LogicPackage.LivroReceitas;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class InserirReceita extends javax.swing.JFrame {
-
+    
+    LivroReceitas l;
+    DefaultListModel<String> model;
     /**
      * Creates new form InserirReceita
      */
+    public InserirReceita(LivroReceitas l) {
+        initComponents();
+        model = new DefaultListModel<>();
+        this.l=l;
+    }
     public InserirReceita() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,21 +47,23 @@ public class InserirReceita extends javax.swing.JFrame {
         lTipoIngrediente = new javax.swing.JLabel();
         lingredientesDisponiveis = new javax.swing.JLabel();
         lmetododepreparacao = new javax.swing.JLabel();
-        pIngredientesSelecionados = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        listIngredientesDisponiveis = new javax.swing.JList<>();
-        bProcurarReceitas = new javax.swing.JButton();
+        lstIngDisp = new javax.swing.JList<>();
         bEliminarIngrediente = new javax.swing.JButton();
-        bAcrescentarReceita = new javax.swing.JButton();
+        bAcrescentarIngrediente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         testAreaMetodoDePreparacao = new javax.swing.JTextArea();
         bGuardarReceita = new javax.swing.JButton();
         bEliminarReceita = new javax.swing.JButton();
         bVoltarAtras = new javax.swing.JButton();
         textFildTituloReceita = new javax.swing.JTextField();
-        textFildnºpessoas = new javax.swing.JTextField();
+        textFildnpessoas = new javax.swing.JTextField();
         boxTipoIngrediente = new javax.swing.JComboBox<>();
         bUpload = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstIngSelec = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,14 +86,8 @@ public class InserirReceita extends javax.swing.JFrame {
 
         lmetododepreparacao.setText("Método de Preparação:");
 
-        listIngredientesDisponiveis.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listIngredientesDisponiveis);
-
-        bProcurarReceitas.setText("Procurar Receitas");
+        lstIngDisp.setModel(boxTipoIngrediente.getModel());
+        jScrollPane1.setViewportView(lstIngDisp);
 
         bEliminarIngrediente.setText("Eliminar Ingrediente");
         bEliminarIngrediente.addActionListener(new java.awt.event.ActionListener() {
@@ -89,7 +96,12 @@ public class InserirReceita extends javax.swing.JFrame {
             }
         });
 
-        bAcrescentarReceita.setText("Acrescentar Receita");
+        bAcrescentarIngrediente.setText("Acrescentar");
+        bAcrescentarIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAcrescentarIngredienteActionPerformed(evt);
+            }
+        });
 
         testAreaMetodoDePreparacao.setColumns(20);
         testAreaMetodoDePreparacao.setRows(5);
@@ -101,7 +113,12 @@ public class InserirReceita extends javax.swing.JFrame {
 
         bVoltarAtras.setText("Voltar atrás");
 
-        boxTipoIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxTipoIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carne", "Peixe", "Vegetal", "Fruta", "Cereal", "Lacticinios", "Leguminosas", "Oleos" }));
+        boxTipoIngrediente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxTipoIngredienteActionPerformed(evt);
+            }
+        });
 
         bUpload.setText("Upload");
         bUpload.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +126,17 @@ public class InserirReceita extends javax.swing.JFrame {
                 bUploadActionPerformed(evt);
             }
         });
+
+        jLabel1.setText("Gramas:");
+
+        jTextField1.setToolTipText("");
+
+        lstIngSelec.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(lstIngSelec);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,11 +162,6 @@ public class InserirReceita extends javax.swing.JFrame {
                             .addComponent(lingredientesselecionados)
                             .addComponent(lmetododepreparacao)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(bProcurarReceitas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bEliminarIngrediente))
-                            .addComponent(pIngredientesSelecionados)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lTituloReceita)
                                     .addComponent(lnºpessoas))
@@ -146,19 +169,25 @@ public class InserirReceita extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(textFildTituloReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textFildnºpessoas)
-                                        .addGap(109, 109, 109)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
+                                        .addComponent(textFildnpessoas)
+                                        .addGap(109, 109, 109))))
+                            .addComponent(bEliminarIngrediente)
+                            .addComponent(jScrollPane3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lupoadImagem)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bUpload))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(lingredientesDisponiveis)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(bAcrescentarReceita, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(bAcrescentarIngrediente)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lTipoIngrediente)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -188,23 +217,21 @@ public class InserirReceita extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lnºpessoas)
-                            .addComponent(textFildnºpessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(textFildnpessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lingredientesselecionados)
                     .addComponent(lingredientesDisponiveis))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pIngredientesSelecionados, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bProcurarReceitas)
-                            .addComponent(bEliminarIngrediente)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bAcrescentarReceita)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bAcrescentarIngrediente)
+                    .addComponent(bEliminarIngrediente)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lmetododepreparacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -214,7 +241,7 @@ public class InserirReceita extends javax.swing.JFrame {
                     .addComponent(bGuardarReceita)
                     .addComponent(bEliminarReceita)
                     .addComponent(bVoltarAtras))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +254,7 @@ public class InserirReceita extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -241,6 +268,18 @@ public class InserirReceita extends javax.swing.JFrame {
     private void bUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUploadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bUploadActionPerformed
+
+    private void boxTipoIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoIngredienteActionPerformed
+        // TODO add your handling code here:
+            lstIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
+    }//GEN-LAST:event_boxTipoIngredienteActionPerformed
+
+    private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
+        // TODO add your handling code here:
+        
+        lstIngSelec.setModel(model);
+        model.addElement(lstIngDisp.getSelectedValue());
+    }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,29 +318,31 @@ public class InserirReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bAcrescentarReceita;
+    private javax.swing.JButton bAcrescentarIngrediente;
     private javax.swing.JButton bEliminarIngrediente;
     private javax.swing.JButton bEliminarReceita;
     private javax.swing.JButton bGuardarReceita;
-    private javax.swing.JButton bProcurarReceitas;
     private javax.swing.JButton bUpload;
     private javax.swing.JButton bVoltarAtras;
     private javax.swing.JComboBox<String> boxTipoIngrediente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lTipoIngrediente;
     private javax.swing.JLabel lTitulo;
     private javax.swing.JLabel lTituloReceita;
     private javax.swing.JLabel lingredientesDisponiveis;
     private javax.swing.JLabel lingredientesselecionados;
-    private javax.swing.JList<String> listIngredientesDisponiveis;
     private javax.swing.JLabel lmetododepreparacao;
     private javax.swing.JLabel lnºpessoas;
+    private javax.swing.JList<String> lstIngDisp;
+    private javax.swing.JList<String> lstIngSelec;
     private javax.swing.JLabel lupoadImagem;
-    private javax.swing.JTextField pIngredientesSelecionados;
     private javax.swing.JTextArea testAreaMetodoDePreparacao;
     private javax.swing.JTextField textFildTituloReceita;
-    private javax.swing.JTextField textFildnºpessoas;
+    private javax.swing.JTextField textFildnpessoas;
     // End of variables declaration//GEN-END:variables
 }
