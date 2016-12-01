@@ -1,5 +1,6 @@
 package LogicPackage;
 
+import LogicPackage.TipoAlimentos.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +25,9 @@ public class LivroReceitas implements Serializable, Variables {
     *Retorna false caso já exista uma receita com o mesmo nome, ou true caso
     *a receita seja adicionada
      */
-    public boolean adicionaReceita(Receita receita) {
+    public boolean adicionaReceita(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+
+        Receita receita = new Receita(nome, ingredientes, pessoas, passos);
 
         for (Receita r : receitas) {
             if (r.getNome().equals(receita.getNome())) {
@@ -59,16 +62,70 @@ public class LivroReceitas implements Serializable, Variables {
     /*
     *Método para adicionar ingredientes á lista de ingredientes disponiveis
      */
-    public boolean adicionaIngrediente(Ingrediente ingrediente) {
+    public boolean adicionaIngrediente(String tipo, String nome, int calorias) {
+        Ingrediente obj = null;
+
+        if (tipo.equalsIgnoreCase(TIPO_CARNE)) {
+            obj = new Carne(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_PEIXE)) {
+            obj = new Peixe(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_VEGETAL)) {
+            obj = new Vegetal(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_FRUTA)) {
+            obj = new Fruta(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_CEREAL)) {
+            obj = new Cereal(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_LACTICINIOS)) {
+            obj = new Lacticinios(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_LEGUMINOSAS)) {
+            obj = new Leguminosas(nome, calorias, 0);
+        } else if (tipo.equalsIgnoreCase(TIPO_OLEOS)) {
+            obj = new Oleos(nome, calorias, 0);
+        }
+
+        if (obj == null) {
+            return false;
+        }
+
         for (Ingrediente i : ingredientes) {
-            if (i.equals(ingrediente)) {
+            if (i.equals(obj)) {
                 return false;
             }
         }
 
-        ingredientes.add(ingrediente);
+        ingredientes.add(obj);
 
         return true;
+    }
+
+    /*
+    *Método para editar receita
+     */
+    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+        if (id < 0 || id >= receitas.size()) {
+            return false;
+        }
+
+        receitas.get(id).setNome(nome);
+        receitas.get(id).setIngredientes(ingredientes);
+        receitas.get(id).setNPessoas(pessoas);
+        receitas.get(id).setcalorias(pessoas);
+
+        return true;
+    }
+
+    /*
+    *Metodo para eliminar receita
+     */
+    public boolean eliminaReceita(String nome) {
+        for (int i = 0; i < receitas.size(); i++) {
+            if (receitas.get(i).getNome().equals(nome)) {
+                receitas.remove(i);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /*
@@ -88,5 +145,4 @@ public class LivroReceitas implements Serializable, Variables {
     public void setReceitas(ArrayList<Receita> receitas) {
         this.receitas = receitas;
     }
-
 }

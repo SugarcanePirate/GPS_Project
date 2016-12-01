@@ -1,6 +1,5 @@
 package LogicPackage;
 
-import LogicPackage.TipoAlimentos.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,42 +24,34 @@ public class Modelo implements Variables {
     *Método para adicionar um novo ingrediente á lista de ingredientes disponiveis
      */
     public boolean adicionaIngrediente(String tipo, String nome, int calorias) {
-        Ingrediente obj = null;
-
-        if (tipo.equalsIgnoreCase(TIPO_CARNE)) {
-            obj = new Carne(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_PEIXE)) {
-            obj = new Peixe(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_VEGETAL)) {
-            obj = new Vegetal(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_FRUTA)) {
-            obj = new Fruta(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_CEREAL)) {
-            obj = new Cereal(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_LACTICINIOS)) {
-            obj = new Lacticinios(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_LEGUMINOSAS)) {
-            obj = new Leguminosas(nome, calorias, 0);
-        } else if (tipo.equalsIgnoreCase(TIPO_OLEOS)) {
-            obj = new Oleos(nome, calorias, 0);
-        }
-
-        if (obj == null) {
-            return false;
-        }
-
-        return livroReceitas.adicionaIngrediente(obj);
+        return livroReceitas.adicionaIngrediente(tipo, nome, calorias);
     }
 
     /*
     *Método para adicionar uma nova receita á lista de receitas
      */
     public boolean adicionaReceitas(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
-
-        Receita receita = new Receita(nome, ingredientes, pessoas, passos);
-
-        return livroReceitas.adicionaReceita(receita);
+        return livroReceitas.adicionaReceita(nome, ingredientes, pessoas, passos);
     }
+
+    /*
+    *Método para pesquisa de receitas
+     */
+    public ArrayList<ReceitaCompativel> pesquisaReceita(String[] ingredientes) {
+        return livroReceitas.pesquisaReceitas(ingredientes);
+    }
+
+    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+        return livroReceitas.editaReceita(id, nome, ingredientes, pessoas, passos);
+    }
+
+    /*
+    *Método para eliminar receita
+     */
+    public boolean eliminaReceita(String nome) {
+        return livroReceitas.eliminaReceita(nome);
+    }
+
 
     /*
     *Método para guardar informação das receitas numa directoria
