@@ -41,15 +41,35 @@ public class ListarReceita extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bInicial.setText("Menu Inicial");
+        bInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInicialActionPerformed(evt);
+            }
+        });
 
         lTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lTitulo.setText("Lista de Receitas");
 
         bVerReceita.setText("Ver Receita");
+        bVerReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVerReceitaActionPerformed(evt);
+            }
+        });
 
         bInserirReceita.setText("Inserir Receita");
+        bInserirReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInserirReceitaActionPerformed(evt);
+            }
+        });
 
         bEditarReceita.setText("Editar Receita");
+        bEditarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEditarReceitaActionPerformed(evt);
+            }
+        });
 
         bEliminarReceita.setText("Eliminar Receita");
         bEliminarReceita.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +79,11 @@ public class ListarReceita extends javax.swing.JFrame {
         });
 
         bVoltarAtras.setText("Voltar atrás");
+        bVoltarAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltarAtrasActionPerformed(evt);
+            }
+        });
 
         lListaR.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -129,6 +154,26 @@ public class ListarReceita extends javax.swing.JFrame {
     private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bEliminarReceitaActionPerformed
+
+    private void bInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInicialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bInicialActionPerformed
+
+    private void bVerReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVerReceitaActionPerformed
+
+    private void bInserirReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInserirReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bInserirReceitaActionPerformed
+
+    private void bEditarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEditarReceitaActionPerformed
+
+    private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVoltarAtrasActionPerformed
 
     /**
      * @param args the command line arguments

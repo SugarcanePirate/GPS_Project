@@ -94,6 +94,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Menu Inicial"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bInicialActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lTitulo">
           <Properties>
@@ -107,16 +110,25 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ver Receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bVerReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bInserirReceita">
           <Properties>
             <Property name="text" type="java.lang.String" value="Inserir Receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bInserirReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bEditarReceita">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEditarReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bEliminarReceita">
           <Properties>
@@ -130,6 +142,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar atr&#xe1;s"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bVoltarAtrasActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

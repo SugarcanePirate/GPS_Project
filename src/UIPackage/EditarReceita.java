@@ -5,17 +5,20 @@
  */
 package UIPackage;
 
+import LogicPackage.LivroReceitas;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class EditarReceita extends javax.swing.JFrame {
-
+ LivroReceitas l;
     /**
      * Creates new form EditarReceita
      */
     public EditarReceita() {
         initComponents();
+        this.l=l;
     }
 
     /**
@@ -29,7 +32,6 @@ public class EditarReceita extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         bUpload = new javax.swing.JButton();
-        bProcuraR = new javax.swing.JButton();
         lTituloR = new javax.swing.JLabel();
         bAcrescentarIngrediente = new javax.swing.JButton();
         lTituloReceita = new javax.swing.JLabel();
@@ -62,13 +64,6 @@ public class EditarReceita extends javax.swing.JFrame {
             }
         });
 
-        bProcuraR.setText("Procurar Receitas");
-        bProcuraR.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bProcuraRActionPerformed(evt);
-            }
-        });
-
         lTituloR.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lTituloR.setText("Editar Receita");
 
@@ -97,14 +92,29 @@ public class EditarReceita extends javax.swing.JFrame {
         lingredientesselecionados.setText("Ingredientes Selecionados:");
 
         bGuardarReceita.setText("Guardar Receita");
+        bGuardarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGuardarReceitaActionPerformed(evt);
+            }
+        });
 
         lupoadImagem.setText("Upload de Imagem");
 
         bEliminaReceita.setText("Eliminar Receita");
+        bEliminaReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminaReceitaActionPerformed(evt);
+            }
+        });
 
         lTipoIngrediente.setText("Tipo Ingrediente:");
 
         bVoltaA.setText("Voltar atrás");
+        bVoltaA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltaAActionPerformed(evt);
+            }
+        });
 
         lingredientesDisponiveis.setText("Ingredientes Disponiveis:");
 
@@ -163,16 +173,15 @@ public class EditarReceita extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bAcrescentarIngrediente)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bEliminarR)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bAcrescentarIngrediente))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lingredientesselecionados)
                                     .addComponent(lmetododepreparacao)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(bProcuraR)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(bEliminarR)))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(235, 235, 235)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,7 +230,6 @@ public class EditarReceita extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAcrescentarIngrediente)
-                    .addComponent(bProcuraR)
                     .addComponent(bEliminarR))
                 .addGap(18, 18, 18)
                 .addComponent(lmetododepreparacao)
@@ -253,10 +261,6 @@ public class EditarReceita extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bUploadActionPerformed
 
-    private void bProcuraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProcuraRActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bProcuraRActionPerformed
-
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
         // TODO add your handling code here:
 
@@ -270,6 +274,18 @@ public class EditarReceita extends javax.swing.JFrame {
     private void bEliminarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarRActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bEliminarRActionPerformed
+
+    private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bGuardarReceitaActionPerformed
+
+    private void bEliminaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminaReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEliminaReceitaActionPerformed
+
+    private void bVoltaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltaAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVoltaAActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,7 +327,6 @@ public class EditarReceita extends javax.swing.JFrame {
     private javax.swing.JButton bEliminaReceita;
     private javax.swing.JButton bEliminarR;
     private javax.swing.JButton bGuardarReceita;
-    private javax.swing.JButton bProcuraR;
     private javax.swing.JButton bUpload;
     private javax.swing.JButton bVoltaA;
     private javax.swing.JComboBox<String> boxTipoIngrediente;
