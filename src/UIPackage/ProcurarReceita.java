@@ -46,7 +46,6 @@ public class ProcurarReceita extends javax.swing.JFrame {
         listReceitasEncontradas = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(950, 550));
         setSize(new java.awt.Dimension(950, 550));
 
         jPanel1.setMaximumSize(new java.awt.Dimension(900, 550));
@@ -91,6 +90,11 @@ public class ProcurarReceita extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listingredienteSel);
 
         comboTipoIngredinete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTipoIngredinete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboTipoIngredineteActionPerformed(evt);
+            }
+        });
 
         listReceitasEncontradas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -139,9 +143,9 @@ public class ProcurarReceita extends javax.swing.JFrame {
                                 .addComponent(bEditarReceita)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(bEliminarReceita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 398, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bVoltaratrás)))
-                        .addContainerGap(104, Short.MAX_VALUE))))
+                        .addContainerGap(105, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +180,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
                     .addComponent(bVoltaratrás, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bEliminarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bEditarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -202,6 +206,10 @@ public class ProcurarReceita extends javax.swing.JFrame {
     private void bEliminaIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminaIActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bEliminaIActionPerformed
+
+    private void comboTipoIngredineteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoIngredineteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboTipoIngredineteActionPerformed
 
     /**
      * @param args the command line arguments
