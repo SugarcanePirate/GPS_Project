@@ -5,11 +5,7 @@
  */
 package gpsproject;
 
-import LogicPackage.*;
-import static LogicPackage.Variables.DIRECTORIA;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
+import UIPackage.MenuInicial;
 
 /**
  *
@@ -21,20 +17,22 @@ public class GPSProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        String nomeDirectoria = System.getProperty("user.home");
-
-        nomeDirectoria = nomeDirectoria + File.separator + DIRECTORIA;
-
-        File directoria = new File(nomeDirectoria);
-
-        if (!directoria.exists()) {
-            try {
-                directoria.mkdir();
-            } catch (Exception e) {
-            }
-
-        }
+        MenuInicial mi = new MenuInicial();
+        mi.setVisible(true);
+//
+//        String nomeDirectoria = System.getProperty("user.home");
+//
+//        nomeDirectoria = nomeDirectoria + File.separator + DIRECTORIA;
+//
+//        File directoria = new File(nomeDirectoria);
+//
+//        if (!directoria.exists()) {
+//            try {
+//                directoria.mkdir();
+//            } catch (Exception e) {
+//            }
+//
+//        }
 
     }
 

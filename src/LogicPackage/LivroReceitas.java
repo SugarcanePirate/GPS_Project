@@ -4,6 +4,7 @@ import LogicPackage.TipoAlimentos.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
+import javax.swing.DefaultListModel;
 
 /*
 *Classe LivroReceitas, que guarda as receitas do programa
@@ -183,6 +184,26 @@ public class LivroReceitas implements Serializable, Variables {
         ingredientes.add(obj);
 
         return true;
+    }
+    
+    public ArrayList<Ingrediente> returnIngredientes(String tipo){
+        ArrayList ingAux = new ArrayList<>();
+        for(Ingrediente i: ingredientes){
+            if(i.getClass().toString().equalsIgnoreCase(tipo)){
+                ingAux.add(i);
+            }
+        }
+        return ingAux;
+    }
+    
+    public DefaultListModel<String> returnNomeIngredientes(String tipo){
+        DefaultListModel<String> ingAux = new DefaultListModel<>();
+        for(int i = 0; i < ingredientes.size(); i++){
+            if(ingredientes.get(i).getClass().toString().equalsIgnoreCase("class LogicPackage.TipoAlimentos."+tipo)){
+                ingAux.addElement(ingredientes.get(i).getNome());
+            }
+        }
+        return ingAux;
     }
 
     /*

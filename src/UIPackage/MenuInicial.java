@@ -12,6 +12,8 @@ public class MenuInicial extends javax.swing.JFrame {
         initComponents();
         l  = new LivroReceitas();
     }
+    
+    
   
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,7 +65,7 @@ public class MenuInicial extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(392, 392, 392)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                            .addComponent(bProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(406, Short.MAX_VALUE))
@@ -105,7 +107,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void bAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAdicionarActionPerformed
         // TODO add your handling code here:
-        InserirReceita ir = new InserirReceita();
+        InserirReceita ir = new InserirReceita(l);
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bAdicionarActionPerformed

@@ -2,7 +2,7 @@ package LogicPackage;
 
 public interface Variables {
 
-    public static final String DIRECTORIA = "5 minute chef";
+    public static final String DIRECTORIA = "5 minutes chef";
     public static final String LIVRO_RECEITAS = "Livro de receitas";
 
     //Nome do tipo de Ingredientes
