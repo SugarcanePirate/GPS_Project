@@ -48,10 +48,10 @@ public class Receita implements Serializable {
             percentagem = 0;
         } else if (x == ingredientes.size()) {
             percentagem = 100;
-        } else if (x < ingredientes.size()) {
+        } else if (ing.length < ingredientes.size()) {
             percentagem = (x * 100) / ingredientes.size();
         } else {
-            percentagem = (ingredientes.size() * 100) / ing.length;
+            percentagem = (x * 100) / ing.length;
         }
 
         return percentagem;
