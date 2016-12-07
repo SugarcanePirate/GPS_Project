@@ -61,7 +61,7 @@ public class InserirReceita extends javax.swing.JFrame {
         boxTipoIngrediente = new javax.swing.JComboBox<>();
         bUpload = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtGramas = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
         lstIngSelec = new javax.swing.JList<>();
 
@@ -144,7 +144,7 @@ public class InserirReceita extends javax.swing.JFrame {
 
         jLabel1.setText("Gramas:");
 
-        jTextField1.setToolTipText("");
+        txtGramas.setToolTipText("");
 
         lstIngSelec.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -200,7 +200,7 @@ public class InserirReceita extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1)
+                                    .addComponent(txtGramas)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(bAcrescentarIngrediente)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -246,7 +246,7 @@ public class InserirReceita extends javax.swing.JFrame {
                     .addComponent(bAcrescentarIngrediente)
                     .addComponent(bEliminarIngrediente)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGramas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lmetododepreparacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -269,7 +269,7 @@ public class InserirReceita extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -291,9 +291,19 @@ public class InserirReceita extends javax.swing.JFrame {
 
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
         // TODO add your handling code here:
+if(txtGramas.getText().equals(" "))
+            return;
+        
+        int g = 0;
+        
+        try{
+            g = Integer.parseInt(txtGramas.getText());
+        }catch(NumberFormatException e){
+            return;
+        }
         
         lstIngSelec.setModel(model);
-        model.addElement(lstIngDisp.getSelectedValue());
+        model.addElement(lstIngDisp.getSelectedValue() + " " + g + "g");
     }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
 
     private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
@@ -357,7 +367,6 @@ public class InserirReceita extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lTipoIngrediente;
     private javax.swing.JLabel lTitulo;
     private javax.swing.JLabel lTituloReceita;
@@ -371,5 +380,6 @@ public class InserirReceita extends javax.swing.JFrame {
     private javax.swing.JTextArea testAreaMetodoDePreparacao;
     private javax.swing.JTextField textFildTituloReceita;
     private javax.swing.JTextField textFildnpessoas;
+    private javax.swing.JTextField txtGramas;
     // End of variables declaration//GEN-END:variables
 }

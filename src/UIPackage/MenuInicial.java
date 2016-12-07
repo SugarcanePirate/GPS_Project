@@ -1,16 +1,16 @@
 
 package UIPackage;
 
-import LogicPackage.LivroReceitas;
+import LogicPackage.Modelo;
 
 public class MenuInicial extends javax.swing.JFrame {
-    LivroReceitas l;
+    Modelo l;
     /**
      * Creates new form MenuInicial
      */
     public MenuInicial() {
         initComponents();
-        l  = new LivroReceitas();
+        l  = new Modelo();
     }
     
     
