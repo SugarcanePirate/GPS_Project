@@ -126,6 +126,10 @@ public class Modelo implements Variables {
         return 1;
     }
     
+    public Ingrediente getIngrediente(String nome){
+        return livroReceitas.getIngrediente(nome);
+    }
+    
     public DefaultListModel<String> returnNomeIngredientes(String tipo){
         return livroReceitas.returnNomeIngredientes(tipo);
     }

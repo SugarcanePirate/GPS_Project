@@ -21,6 +21,12 @@ public abstract class Ingrediente implements Serializable {
         this.calorias = calorias;
         this.quantidade = quantidade;
     }
+    
+    public Ingrediente(Ingrediente i, int g){
+        this.calorias = i.calorias;
+        this.nome = i.nome;
+        this.quantidade = g;
+    }
 
     /*
     *Getters para as propriedades dos ingredientes

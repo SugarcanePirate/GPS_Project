@@ -234,6 +234,14 @@ public class LivroReceitas implements Serializable, Variables {
         receitas.remove(id);
         return true;
     }
+    
+    public Ingrediente getIngrediente(String nome){
+        for(Ingrediente i: ingredientes){
+            if(i.getNome().equalsIgnoreCase(nome))
+                return i;
+        }
+        return null;
+    }
 
     /*
     *Getters para as informações do LivroReceitas

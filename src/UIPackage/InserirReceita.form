@@ -57,8 +57,6 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="bGuardarReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="bEliminarReceita" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="bVoltarAtras" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
@@ -75,9 +73,9 @@
                                   </Group>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="textFildTituloReceita" min="-2" pref="137" max="-2" attributes="0"/>
+                                      <Component id="txtTitulo" min="-2" pref="137" max="-2" attributes="0"/>
                                       <Group type="102" attributes="0">
-                                          <Component id="textFildnpessoas" max="32767" attributes="0"/>
+                                          <Component id="txtPessoas" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -85,7 +83,7 @@
                               <Component id="bEliminarIngrediente" min="-2" max="-2" attributes="0"/>
                               <Component id="jScrollPane3" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="288" max="32767" attributes="0"/>
+                          <EmptySpace pref="293" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lupoadImagem" min="-2" max="-2" attributes="0"/>
@@ -137,12 +135,12 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lTituloReceita" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFildTituloReceita" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtTitulo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lnºpessoas" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFildnpessoas" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPessoas" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -170,7 +168,6 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="bGuardarReceita" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="bEliminarReceita" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="bVoltarAtras" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -264,7 +261,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="testAreaMetodoDePreparacao">
+            <Component class="javax.swing.JTextArea" name="taPreparacao">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
@@ -280,14 +277,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bGuardarReceitaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="bEliminarReceita">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar Receita"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarReceitaActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="bVoltarAtras">
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar atr&#xe1;s"/>
@@ -296,9 +285,9 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bVoltarAtrasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFildTituloReceita">
+        <Component class="javax.swing.JTextField" name="txtTitulo">
         </Component>
-        <Component class="javax.swing.JTextField" name="textFildnpessoas">
+        <Component class="javax.swing.JTextField" name="txtPessoas">
         </Component>
         <Component class="javax.swing.JComboBox" name="boxTipoIngrediente">
           <Properties>
@@ -350,13 +339,7 @@
             <Component class="javax.swing.JList" name="lstIngSelec">
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                  <StringArray count="5">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                    <StringItem index="4" value="Item 5"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
               </Properties>
               <AuxValues>

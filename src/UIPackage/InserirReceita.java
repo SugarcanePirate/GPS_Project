@@ -5,7 +5,17 @@
  */
 package UIPackage;
 
+import LogicPackage.Ingrediente;
 import LogicPackage.Modelo;
+import LogicPackage.TipoAlimentos.Carne;
+import LogicPackage.TipoAlimentos.Cereal;
+import LogicPackage.TipoAlimentos.Fruta;
+import LogicPackage.TipoAlimentos.Lacticinios;
+import LogicPackage.TipoAlimentos.Leguminosas;
+import LogicPackage.TipoAlimentos.Oleos;
+import LogicPackage.TipoAlimentos.Peixe;
+import LogicPackage.TipoAlimentos.Vegetal;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -16,12 +26,14 @@ public class InserirReceita extends javax.swing.JFrame {
     
     Modelo l;
     DefaultListModel<String> model;
+    ArrayList<Ingrediente> ing = null;
     /**
      * Creates new form InserirReceita
      */
     public InserirReceita(Modelo l) {
         initComponents();
         model = new DefaultListModel<>();
+        ing = new ArrayList<>();
         this.l=l;
     }
     public InserirReceita() {
@@ -52,12 +64,11 @@ public class InserirReceita extends javax.swing.JFrame {
         bEliminarIngrediente = new javax.swing.JButton();
         bAcrescentarIngrediente = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        testAreaMetodoDePreparacao = new javax.swing.JTextArea();
+        taPreparacao = new javax.swing.JTextArea();
         bGuardarReceita = new javax.swing.JButton();
-        bEliminarReceita = new javax.swing.JButton();
         bVoltarAtras = new javax.swing.JButton();
-        textFildTituloReceita = new javax.swing.JTextField();
-        textFildnpessoas = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        txtPessoas = new javax.swing.JTextField();
         boxTipoIngrediente = new javax.swing.JComboBox<>();
         bUpload = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -103,21 +114,14 @@ public class InserirReceita extends javax.swing.JFrame {
             }
         });
 
-        testAreaMetodoDePreparacao.setColumns(20);
-        testAreaMetodoDePreparacao.setRows(5);
-        jScrollPane2.setViewportView(testAreaMetodoDePreparacao);
+        taPreparacao.setColumns(20);
+        taPreparacao.setRows(5);
+        jScrollPane2.setViewportView(taPreparacao);
 
         bGuardarReceita.setText("Guardar Receita");
         bGuardarReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bGuardarReceitaActionPerformed(evt);
-            }
-        });
-
-        bEliminarReceita.setText("Eliminar Receita");
-        bEliminarReceita.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bEliminarReceitaActionPerformed(evt);
             }
         });
 
@@ -146,11 +150,6 @@ public class InserirReceita extends javax.swing.JFrame {
 
         txtGramas.setToolTipText("");
 
-        lstIngSelec.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(lstIngSelec);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -166,8 +165,6 @@ public class InserirReceita extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(bGuardarReceita)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bEliminarReceita)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bVoltarAtras)
                         .addGap(12, 12, 12))
@@ -182,13 +179,13 @@ public class InserirReceita extends javax.swing.JFrame {
                                     .addComponent(lnºpessoas))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(textFildTituloReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(textFildnpessoas)
+                                        .addComponent(txtPessoas)
                                         .addGap(109, 109, 109))))
                             .addComponent(bEliminarIngrediente)
                             .addComponent(jScrollPane3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 293, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lupoadImagem)
@@ -228,11 +225,11 @@ public class InserirReceita extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lTituloReceita)
-                            .addComponent(textFildTituloReceita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lnºpessoas)
-                            .addComponent(textFildnpessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtPessoas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lingredientesselecionados)
@@ -254,7 +251,6 @@ public class InserirReceita extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bGuardarReceita)
-                    .addComponent(bEliminarReceita)
                     .addComponent(bVoltarAtras))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -278,6 +274,12 @@ public class InserirReceita extends javax.swing.JFrame {
 
     private void bEliminarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarIngredienteActionPerformed
         // TODO add your handling code here:
+        
+        if(lstIngSelec.getSelectedIndex() < 0)
+            return;
+        
+        model.remove(lstIngSelec.getSelectedIndex());
+        lstIngSelec.setModel(model);
     }//GEN-LAST:event_bEliminarIngredienteActionPerformed
 
     private void bUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUploadActionPerformed
@@ -291,31 +293,79 @@ public class InserirReceita extends javax.swing.JFrame {
 
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
         // TODO add your handling code here:
-if(txtGramas.getText().equals(" "))
-            return;
-        
         int g = 0;
         
-        try{
-            g = Integer.parseInt(txtGramas.getText());
-        }catch(NumberFormatException e){
+        String tipo = boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex());
+        tipo = tipo.toLowerCase();
+        Ingrediente i = l.getIngrediente(lstIngDisp.getSelectedValue());
+        
+        
+        if (txtGramas.getText().equals(" ")) {
             return;
         }
         
+
+        try {
+            g = Integer.parseInt(txtGramas.getText());
+        } catch (NumberFormatException e) {
+            return;
+        }
+
         lstIngSelec.setModel(model);
         model.addElement(lstIngDisp.getSelectedValue() + " " + g + "g");
+        
+        switch(tipo){
+            case "carne":
+                ing.add(new Carne(i.getNome(),i.getCalorias(), g));
+                break;
+            case "cereal":
+                ing.add(new Cereal(i.getNome(),i.getCalorias(), g));
+                break;
+            case "fruta":
+                ing.add(new Fruta(i.getNome(),i.getCalorias(), g));
+                break;
+            case "lacticinios":
+                ing.add(new Lacticinios(i.getNome(),i.getCalorias(), g));
+                break;
+            case "leguminosas":
+                ing.add(new Leguminosas(i.getNome(),i.getCalorias(), g));
+                break;
+            case "oleos":                
+                ing.add(new Oleos(i.getNome(),i.getCalorias(), g));
+                break;
+            case "peixe":
+                ing.add(new Peixe(i.getNome(),i.getCalorias(), g));
+                break;
+            case "vegetal":
+                ing.add(new Vegetal(i.getNome(),i.getCalorias(), g));
+                break;
+            default:
+                break;
+        }
     }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
 
     private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
         // TODO add your handling code here:
+        if(txtTitulo.getText().equals("") || txtPessoas.getText().equals("") || taPreparacao.getText().equals(""))
+            return;
+        int nPessoas = 0;
+        
+        try{
+            nPessoas = Integer.parseInt(txtPessoas.getText());
+        }catch(NumberFormatException e){
+            return;
+        }
+        
+        l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText());
     }//GEN-LAST:event_bGuardarReceitaActionPerformed
-
-    private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bEliminarReceitaActionPerformed
 
     private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
         // TODO add your handling code here:
+        
+        MenuInicial mi = new MenuInicial();
+        mi.setVisible(true);
+        this.dispose();
+        
     }//GEN-LAST:event_bVoltarAtrasActionPerformed
 
     /**
@@ -357,7 +407,6 @@ if(txtGramas.getText().equals(" "))
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAcrescentarIngrediente;
     private javax.swing.JButton bEliminarIngrediente;
-    private javax.swing.JButton bEliminarReceita;
     private javax.swing.JButton bGuardarReceita;
     private javax.swing.JButton bUpload;
     private javax.swing.JButton bVoltarAtras;
@@ -377,9 +426,9 @@ if(txtGramas.getText().equals(" "))
     private javax.swing.JList<String> lstIngDisp;
     private javax.swing.JList<String> lstIngSelec;
     private javax.swing.JLabel lupoadImagem;
-    private javax.swing.JTextArea testAreaMetodoDePreparacao;
-    private javax.swing.JTextField textFildTituloReceita;
-    private javax.swing.JTextField textFildnpessoas;
+    private javax.swing.JTextArea taPreparacao;
     private javax.swing.JTextField txtGramas;
+    private javax.swing.JTextField txtPessoas;
+    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }
