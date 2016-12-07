@@ -5,20 +5,23 @@
  */
 package UIPackage;
 
-import LogicPackage.LivroReceitas;
+import LogicPackage.Modelo;
 
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class EditarReceita extends javax.swing.JFrame {
- LivroReceitas l;
+ Modelo l;
     /**
      * Creates new form EditarReceita
      */
-    public EditarReceita() {
+    public EditarReceita(Modelo l) {
         initComponents();
         this.l=l;
+    }
+        public EditarReceita() {
+        initComponents();
     }
 
     /**

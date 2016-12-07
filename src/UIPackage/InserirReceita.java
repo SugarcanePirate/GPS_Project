@@ -5,7 +5,7 @@
  */
 package UIPackage;
 
-import LogicPackage.LivroReceitas;
+import LogicPackage.Modelo;
 import javax.swing.DefaultListModel;
 
 /**
@@ -14,12 +14,12 @@ import javax.swing.DefaultListModel;
  */
 public class InserirReceita extends javax.swing.JFrame {
     
-    LivroReceitas l;
+    Modelo l;
     DefaultListModel<String> model;
     /**
      * Creates new form InserirReceita
      */
-    public InserirReceita(LivroReceitas l) {
+    public InserirReceita(Modelo l) {
         initComponents();
         model = new DefaultListModel<>();
         this.l=l;

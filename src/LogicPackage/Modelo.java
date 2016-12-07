@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 
 /*
@@ -137,5 +138,8 @@ public class Modelo implements Variables {
      */
     public void setLivroReceitas(LivroReceitas livroReceitas) {
         this.livroReceitas = livroReceitas;
+    }
+    public DefaultListModel<String> returnNomeIngredientes(String tipo){
+        return livroReceitas.returnNomeIngredientes(tipo);
     }
 }
