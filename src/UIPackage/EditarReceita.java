@@ -12,7 +12,7 @@ import LogicPackage.Modelo;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class EditarReceita extends javax.swing.JFrame {
- Modelo l;
+    Modelo l;
     /**
      * Creates new form EditarReceita
      */
@@ -20,7 +20,7 @@ public class EditarReceita extends javax.swing.JFrame {
         initComponents();
         this.l=l;
     }
-        public EditarReceita() {
+    public EditarReceita() {
         initComponents();
     }
 
