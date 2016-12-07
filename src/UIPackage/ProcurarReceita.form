@@ -177,11 +177,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Eliminar receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bAcrescentarReceita">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acrescentar Receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAcrescentarReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bProcuraR">
           <Properties>
@@ -203,11 +209,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Editar Receita"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEditarReceitaActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="bVoltaratr&#xe1;s">
           <Properties>
             <Property name="text" type="java.lang.String" value="Voltar atr&#xe1;s"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bVoltaratr&#xe1;sActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>

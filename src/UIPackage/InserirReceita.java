@@ -108,10 +108,25 @@ public class InserirReceita extends javax.swing.JFrame {
         jScrollPane2.setViewportView(testAreaMetodoDePreparacao);
 
         bGuardarReceita.setText("Guardar Receita");
+        bGuardarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bGuardarReceitaActionPerformed(evt);
+            }
+        });
 
         bEliminarReceita.setText("Eliminar Receita");
+        bEliminarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarReceitaActionPerformed(evt);
+            }
+        });
 
         bVoltarAtras.setText("Voltar atrás");
+        bVoltarAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltarAtrasActionPerformed(evt);
+            }
+        });
 
         boxTipoIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carne", "Peixe", "Vegetal", "Fruta", "Cereal", "Lacticinios", "Leguminosas", "Oleos" }));
         boxTipoIngrediente.addActionListener(new java.awt.event.ActionListener() {
@@ -185,7 +200,7 @@ public class InserirReceita extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                                    .addComponent(jTextField1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(bAcrescentarIngrediente)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -254,7 +269,7 @@ public class InserirReceita extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -280,6 +295,18 @@ public class InserirReceita extends javax.swing.JFrame {
         lstIngSelec.setModel(model);
         model.addElement(lstIngDisp.getSelectedValue());
     }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
+
+    private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bGuardarReceitaActionPerformed
+
+    private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEliminarReceitaActionPerformed
+
+    private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVoltarAtrasActionPerformed
 
     /**
      * @param args the command line arguments

@@ -46,6 +46,11 @@ public class VerReceita extends javax.swing.JFrame {
         lTitulo.setText("Receita");
 
         bVoltar.setText("Voltar atrás");
+        bVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltarActionPerformed(evt);
+            }
+        });
 
         lNPessoas.setText("Nº de Pessoas: ...");
 
@@ -120,6 +125,10 @@ public class VerReceita extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVoltarActionPerformed
 
     /**
      * @param args the command line arguments

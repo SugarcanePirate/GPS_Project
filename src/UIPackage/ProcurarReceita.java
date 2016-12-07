@@ -61,8 +61,18 @@ public class ProcurarReceita extends javax.swing.JFrame {
         LTipoIngrediente.setText("Tipo de Ingrediente");
 
         bEliminarReceita.setText("Eliminar receita");
+        bEliminarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarReceitaActionPerformed(evt);
+            }
+        });
 
         bAcrescentarReceita.setText("Acrescentar Receita");
+        bAcrescentarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAcrescentarReceitaActionPerformed(evt);
+            }
+        });
 
         bProcuraR.setText("Procurar Receita");
         bProcuraR.addActionListener(new java.awt.event.ActionListener() {
@@ -79,8 +89,18 @@ public class ProcurarReceita extends javax.swing.JFrame {
         });
 
         bEditarReceita.setText("Editar Receita");
+        bEditarReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEditarReceitaActionPerformed(evt);
+            }
+        });
 
         bVoltaratrás.setText("Voltar atrás");
+        bVoltaratrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVoltaratrásActionPerformed(evt);
+            }
+        });
 
         listingredienteSel.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -210,6 +230,22 @@ public class ProcurarReceita extends javax.swing.JFrame {
     private void comboTipoIngredineteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoIngredineteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTipoIngredineteActionPerformed
+
+    private void bEditarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEditarReceitaActionPerformed
+
+    private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bEliminarReceitaActionPerformed
+
+    private void bVoltaratrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltaratrásActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bVoltaratrásActionPerformed
+
+    private void bAcrescentarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarReceitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bAcrescentarReceitaActionPerformed
 
     /**
      * @param args the command line arguments
