@@ -49,8 +49,8 @@ public class Modelo implements Variables {
     /*
     *Método para eliminar receita
      */
-    public boolean eliminaReceita(String nome) {
-        return livroReceitas.eliminaReceita(nome);
+    public boolean eliminaReceita(int id) {
+        return livroReceitas.eliminaReceita(id);
     }
 
 
@@ -139,7 +139,8 @@ public class Modelo implements Variables {
     public void setLivroReceitas(LivroReceitas livroReceitas) {
         this.livroReceitas = livroReceitas;
     }
-    public DefaultListModel<String> returnNomeIngredientes(String tipo){
+
+    public DefaultListModel<String> returnNomeIngredientes(String tipo) {
         return livroReceitas.returnNomeIngredientes(tipo);
     }
 }
