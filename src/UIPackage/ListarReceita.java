@@ -55,7 +55,6 @@ public class ListarReceita extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        bInicial = new javax.swing.JButton();
         lTitulo = new javax.swing.JLabel();
         bVerReceita = new javax.swing.JButton();
         bInserirReceita = new javax.swing.JButton();
@@ -66,13 +65,6 @@ public class ListarReceita extends javax.swing.JFrame {
         lListaR = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        bInicial.setText("Menu Inicial");
-        bInicial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInicialActionPerformed(evt);
-            }
-        });
 
         lTitulo.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lTitulo.setText("Lista de Receitas");
@@ -127,8 +119,7 @@ public class ListarReceita extends javax.swing.JFrame {
                             .addComponent(bEditarReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bInserirReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bVerReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bVoltarAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bVoltarAtras, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(85, 85, 85)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,16 +135,14 @@ public class ListarReceita extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(bInicial)
-                        .addGap(49, 49, 49)
                         .addComponent(bVerReceita)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(bInserirReceita)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(bEditarReceita)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(bEliminarReceita)
-                        .addGap(55, 55, 55)
+                        .addGap(162, 162, 162)
                         .addComponent(bVoltarAtras))
                     .addComponent(jScrollPane1))
                 .addContainerGap(70, Short.MAX_VALUE))
@@ -185,12 +174,6 @@ public class ListarReceita extends javax.swing.JFrame {
 
         model.remove(i);
     }//GEN-LAST:event_bEliminarReceitaActionPerformed
-
-    private void bInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInicialActionPerformed
-        MenuInicial mi = new MenuInicial(l);
-        mi.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_bInicialActionPerformed
 
     private void bVerReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerReceitaActionPerformed
         int i = lListaR.getSelectedIndex();
@@ -267,7 +250,6 @@ public class ListarReceita extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bEditarReceita;
     private javax.swing.JButton bEliminarReceita;
-    private javax.swing.JButton bInicial;
     private javax.swing.JButton bInserirReceita;
     private javax.swing.JButton bVerReceita;
     private javax.swing.JButton bVoltarAtras;

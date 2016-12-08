@@ -15,10 +15,10 @@ import javax.swing.DefaultListModel;
  */
 public class Modelo implements Variables {
 
-    private LivroReceitas livroReceitas;
+    private LivroReceitas livroReceitas = null;
 
     public Modelo() {
-        livroReceitas = new LivroReceitas();
+            recuperaReceitas();
     }
 
     /*

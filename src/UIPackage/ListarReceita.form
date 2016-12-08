@@ -47,8 +47,7 @@
                               <Component id="bEditarReceita" alignment="0" max="32767" attributes="0"/>
                               <Component id="bInserirReceita" alignment="0" max="32767" attributes="0"/>
                               <Component id="bVerReceita" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bInicial" alignment="0" max="32767" attributes="0"/>
-                              <Component id="bVoltarAtras" min="-2" pref="122" max="-2" attributes="0"/>
+                              <Component id="bVoltarAtras" alignment="1" min="-2" pref="122" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="560" max="-2" attributes="0"/>
@@ -70,16 +69,14 @@
                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="bInicial" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="bVerReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="bInserirReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="bEditarReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="bEliminarReceita" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                           <Component id="bVoltarAtras" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -90,14 +87,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="bInicial">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Menu Inicial"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bInicialActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="lTitulo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">

@@ -111,6 +111,7 @@ public class EditarReceita extends javax.swing.JFrame {
         lTituloReceita.setText("Titulo da Receita:");
 
         testAreaMetodoDePreparacao.setColumns(20);
+        testAreaMetodoDePreparacao.setLineWrap(true);
         testAreaMetodoDePreparacao.setRows(5);
         jScrollPane2.setViewportView(testAreaMetodoDePreparacao);
 
@@ -218,9 +219,6 @@ public class EditarReceita extends javax.swing.JFrame {
                                             .addGap(18, 18, 18)
                                             .addComponent(boxTipoIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(341, 341, 341)
-                                .addComponent(lTituloR, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lTituloReceita)
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -230,6 +228,10 @@ public class EditarReceita extends javax.swing.JFrame {
                                         .addGap(109, 109, 109))))
                             .addComponent(lnºpessoas))
                         .addContainerGap(99, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(401, 401, 401)
+                .addComponent(lTituloR, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,10 +405,12 @@ public class EditarReceita extends javax.swing.JFrame {
         }
 
         if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText())) {
-             JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+             JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
                  JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        l.guardarReceitas();
 
         if (pr instanceof ListarReceita) {
             pr = new ListarReceita(l);

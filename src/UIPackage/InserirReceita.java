@@ -120,6 +120,7 @@ public class InserirReceita extends javax.swing.JFrame {
         });
 
         taPreparacao.setColumns(20);
+        taPreparacao.setLineWrap(true);
         taPreparacao.setRows(5);
         jScrollPane2.setViewportView(taPreparacao);
 
@@ -377,17 +378,18 @@ public class InserirReceita extends javax.swing.JFrame {
             if(nPessoas > 4){
                  JOptionPane.showMessageDialog(null, "Nºde Pessoas não deve ser > 4!", "Warning",
                  JOptionPane.WARNING_MESSAGE);
-            return;}
+                    return;
+            }
         } catch (NumberFormatException e) {
             return;
         }
 
         if (!l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText())) {
-            JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+            JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
                  JOptionPane.WARNING_MESSAGE);
             return;
         }
-
+        l.guardarReceitas();
         InserirReceita ir = new InserirReceita(l, fr);
         ir.setVisible(true);
         this.dispose();

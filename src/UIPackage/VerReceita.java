@@ -41,7 +41,7 @@ public class VerReceita extends javax.swing.JFrame {
 
         lCalorias.setText("Calorias: " + r.getCalorias());
 
-        lMetodoPrep.setText(r.getPassos());
+        taPreparacao.setText(r.getPassos());
     }
 
     /**
@@ -62,9 +62,10 @@ public class VerReceita extends javax.swing.JFrame {
         eMetodoPrep = new javax.swing.JEditorPane();
         lCalorias = new javax.swing.JLabel();
         lMetodoPrep = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taPreparacao = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(950, 550));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(950, 550));
 
@@ -88,12 +89,20 @@ public class VerReceita extends javax.swing.JFrame {
 
         lMetodoPrep.setText("Método de Preparação: ...");
 
+        taPreparacao.setColumns(20);
+        taPreparacao.setRows(5);
+        jScrollPane2.setViewportView(taPreparacao);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(424, 424, 424)
+                .addComponent(lTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -101,21 +110,21 @@ public class VerReceita extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lIngredientes)
                             .addComponent(lCalorias)
-                            .addComponent(lMetodoPrep)
-                            .addComponent(lNPessoas)))
+                            .addComponent(lMetodoPrep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lNPessoas)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(424, 424, 424)
-                        .addComponent(lTitulo)))
-                .addContainerGap(442, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(bVoltar)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bVoltar)))
                 .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(lTitulo)
@@ -126,11 +135,10 @@ public class VerReceita extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addComponent(lCalorias)
                         .addGap(41, 41, 41)
-                        .addComponent(lMetodoPrep))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
+                        .addComponent(lMetodoPrep)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(bVoltar)
                 .addGap(26, 26, 26))
         );
@@ -197,10 +205,12 @@ public class VerReceita extends javax.swing.JFrame {
     private javax.swing.JEditorPane eMetodoPrep;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lCalorias;
     private javax.swing.JLabel lIngredientes;
     private javax.swing.JLabel lMetodoPrep;
     private javax.swing.JLabel lNPessoas;
     private javax.swing.JLabel lTitulo;
+    private javax.swing.JTextArea taPreparacao;
     // End of variables declaration//GEN-END:variables
 }
