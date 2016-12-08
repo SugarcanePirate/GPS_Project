@@ -5,6 +5,8 @@
  */
 package gpsproject;
 
+import LogicPackage.Ingrediente;
+import LogicPackage.TipoAlimentos.Carne;
 import UIPackage.MenuInicial;
 
 /**
@@ -17,24 +19,9 @@ public class GPSProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         MenuInicial mi = new MenuInicial();
         mi.setVisible(true);
-
-//        String nomeDirectoria = System.getProperty("user.home");
-//
-//        nomeDirectoria = nomeDirectoria + File.separator + DIRECTORIA;
-//
-//        File directoria = new File(nomeDirectoria);
-//
-//        if (!directoria.exists()) {
-//            try {
-//                directoria.mkdir();
-//            } catch (Exception e) {
-//            }
-//
-//        }
-
     }
 
 }

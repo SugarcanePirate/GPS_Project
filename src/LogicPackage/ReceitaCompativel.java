@@ -12,10 +12,12 @@ public class ReceitaCompativel implements Comparable<ReceitaCompativel>, Seriali
 
     private Receita receita;
     private int percentagem;
+    private int id;
 
-    public ReceitaCompativel(Receita receita, int percentagem) {
+    public ReceitaCompativel(Receita receita, int percentagem, int id) {
         this.receita = receita;
         this.percentagem = percentagem;
+        this.id = id;
     }
 
     /*
@@ -27,6 +29,10 @@ public class ReceitaCompativel implements Comparable<ReceitaCompativel>, Seriali
 
     public int getPercentagem() {
         return percentagem;
+    }
+
+    public int getId() {
+        return id;
     }
 
     /*

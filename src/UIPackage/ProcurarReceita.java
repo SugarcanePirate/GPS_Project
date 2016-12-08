@@ -5,15 +5,35 @@
  */
 package UIPackage;
 
+import LogicPackage.Modelo;
+import LogicPackage.ReceitaCompativel;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author joaom
  */
 public class ProcurarReceita extends javax.swing.JFrame {
 
+    Modelo l;
+    DefaultListModel<String> model;
+    DefaultListModel<String> m;
+    ArrayList<String> ingredientes;
+    ArrayList<ReceitaCompativel> rCompativel;
+
     /**
      * Creates new form ProcurarReceita
      */
+    public ProcurarReceita(Modelo l) {
+        initComponents();
+        m = new DefaultListModel<>();
+        model = new DefaultListModel<>();
+        ingredientes = new ArrayList<>();
+        rCompativel = new ArrayList<>();
+        this.l = l;
+    }
+
     public ProcurarReceita() {
         initComponents();
     }
@@ -38,12 +58,13 @@ public class ProcurarReceita extends javax.swing.JFrame {
         bEliminaI = new javax.swing.JButton();
         bEditarReceita = new javax.swing.JButton();
         bVoltaratrás = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listingredienteSel = new javax.swing.JList<>();
-        IingredienteDisp = new javax.swing.JTextField();
-        comboTipoIngredinete = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         listReceitasEncontradas = new javax.swing.JList<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lstIngSelec = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        lstIngDisp = new javax.swing.JList<>();
+        boxTipoIngrediente = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(950, 550));
@@ -67,7 +88,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
             }
         });
 
-        bAcrescentarReceita.setText("Acrescentar Receita");
+        bAcrescentarReceita.setText("Acrescentar Ingrediente");
         bAcrescentarReceita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAcrescentarReceitaActionPerformed(evt);
@@ -102,26 +123,19 @@ public class ProcurarReceita extends javax.swing.JFrame {
             }
         });
 
-        listingredienteSel.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(listingredienteSel);
+        jScrollPane2.setViewportView(listReceitasEncontradas);
 
-        comboTipoIngredinete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboTipoIngredinete.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane3.setViewportView(lstIngSelec);
+
+        lstIngDisp.setModel(boxTipoIngrediente.getModel());
+        jScrollPane4.setViewportView(lstIngDisp);
+
+        boxTipoIngrediente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Carne", "Peixe", "Vegetal", "Fruta", "Cereal", "Lacticinios", "Leguminosas", "Oleos" }));
+        boxTipoIngrediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboTipoIngredineteActionPerformed(evt);
+                boxTipoIngredienteActionPerformed(evt);
             }
         });
-
-        listReceitasEncontradas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(listReceitasEncontradas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -135,64 +149,65 @@ public class ProcurarReceita extends javax.swing.JFrame {
                 .addGap(117, 117, 117)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IingredienteDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(lIngredienteSelecionados)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(bProcuraR)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(42, 42, 42)
                                 .addComponent(bEliminaI)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGap(141, 141, 141)
-                                .addComponent(LTipoIngrediente)
-                                .addGap(18, 18, 18)
-                                .addComponent(comboTipoIngredinete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(bAcrescentarReceita)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lingredienteDisp)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(101, 101, 101))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bAcrescentarReceita))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lingredienteDisp)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(LTipoIngrediente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(boxTipoIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(84, 84, 84))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(bEditarReceita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(bEliminarReceita)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bEliminarReceita)
+                                .addGap(188, 188, 188)
                                 .addComponent(bVoltaratrás)))
-                        .addContainerGap(105, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LTipoIngrediente)
+                            .addComponent(boxTipoIngrediente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addComponent(lingredienteDisp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(lProcurarreceitas, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
                         .addComponent(lIngredienteSelecionados)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IingredienteDisp, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bProcuraR, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bEliminaI, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(comboTipoIngredinete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LTipoIngrediente))
-                        .addGap(18, 18, 18)
-                        .addComponent(lingredienteDisp)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bAcrescentarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bProcuraR, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bEliminaI, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAcrescentarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,7 +215,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
                     .addComponent(bVoltaratrás, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bEliminarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bEditarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -220,32 +235,88 @@ public class ProcurarReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bProcuraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProcuraRActionPerformed
-        // TODO add your handling code here:
+        if (ingredientes.isEmpty()) {
+            return;
+        }
+
+        rCompativel = l.getLivroReceitas().pesquisaReceitas(ingredientes);
+
+        if (rCompativel.isEmpty()) {
+            return;
+        }
+
+        for (ReceitaCompativel r : rCompativel) {
+            m.addElement(r.getReceita().getNome() + " " + r.getPercentagem() + "%");
+        }
+
+        listReceitasEncontradas.setModel(m);
     }//GEN-LAST:event_bProcuraRActionPerformed
 
     private void bEliminaIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminaIActionPerformed
-        // TODO add your handling code here:
+        if (lstIngSelec.getSelectedIndex() < 0) {
+            return;
+        }
+
+        for (int i = 0; i < ingredientes.size(); i++) {
+            if (ingredientes.get(i).equals(lstIngSelec.getSelectedValue())) {
+                ingredientes.remove(i);
+            }
+        }
+
+        model.remove(lstIngSelec.getSelectedIndex());
+        lstIngSelec.setModel(model);
     }//GEN-LAST:event_bEliminaIActionPerformed
 
-    private void comboTipoIngredineteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTipoIngredineteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboTipoIngredineteActionPerformed
-
     private void bEditarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarReceitaActionPerformed
-        // TODO add your handling code here:
+        ProcurarReceita r = this;
+
+        if (listReceitasEncontradas.getSelectedIndex() < 0) {
+            return;
+        }
+        int i = listReceitasEncontradas.getSelectedIndex();
+
+        EditarReceita ed = new EditarReceita(l, rCompativel.get(i).getReceita(), rCompativel.get(i).getId(), r);
+        ed.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bEditarReceitaActionPerformed
 
     private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
-        // TODO add your handling code here:
+        int i = listReceitasEncontradas.getSelectedIndex();
+        if (i < 0) {
+            return;
+        }
+
+        if (!l.eliminaReceita(rCompativel.get(i).getId())) {
+            return;
+        }
+
+        m.remove(i);
+        listReceitasEncontradas.setModel(m);
+        rCompativel.remove(i);
     }//GEN-LAST:event_bEliminarReceitaActionPerformed
 
     private void bVoltaratrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltaratrásActionPerformed
-        // TODO add your handling code here:
+        MenuInicial mi = new MenuInicial(l);
+        mi.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bVoltaratrásActionPerformed
 
     private void bAcrescentarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarReceitaActionPerformed
-        // TODO add your handling code here:
+
+        for (String s : ingredientes) {
+            if (s.equals(lstIngDisp.getSelectedValue())) {
+                return;
+            }
+        }
+
+        lstIngSelec.setModel(model);
+        ingredientes.add(lstIngDisp.getSelectedValue());
+        model.addElement(lstIngDisp.getSelectedValue());
     }//GEN-LAST:event_bAcrescentarReceitaActionPerformed
+
+    private void boxTipoIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoIngredienteActionPerformed
+        lstIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
+    }//GEN-LAST:event_boxTipoIngredienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,7 +325,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -283,7 +354,6 @@ public class ProcurarReceita extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField IingredienteDisp;
     private javax.swing.JLabel LTipoIngrediente;
     private javax.swing.JButton bAcrescentarReceita;
     private javax.swing.JButton bEditarReceita;
@@ -291,14 +361,16 @@ public class ProcurarReceita extends javax.swing.JFrame {
     private javax.swing.JButton bEliminarReceita;
     private javax.swing.JButton bProcuraR;
     private javax.swing.JButton bVoltaratrás;
-    private javax.swing.JComboBox<String> comboTipoIngredinete;
+    private javax.swing.JComboBox<String> boxTipoIngrediente;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lIngredienteSelecionados;
     private javax.swing.JLabel lProcurarreceitas;
     private javax.swing.JLabel lingredienteDisp;
     private javax.swing.JList<String> listReceitasEncontradas;
-    private javax.swing.JList<String> listingredienteSel;
+    private javax.swing.JList<String> lstIngDisp;
+    private javax.swing.JList<String> lstIngSelec;
     // End of variables declaration//GEN-END:variables
 }

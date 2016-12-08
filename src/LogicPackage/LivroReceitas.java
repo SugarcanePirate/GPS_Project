@@ -126,12 +126,12 @@ public class LivroReceitas implements Serializable, Variables {
     *Método para procurar receitas de acordo com os ingredientes escolhidos pelo
     *utilizador
      */
-    public ArrayList<ReceitaCompativel> pesquisaReceitas(String[] ingredientes) {
+    public ArrayList<ReceitaCompativel> pesquisaReceitas(ArrayList<String> ingredientes) {
         ArrayList<ReceitaCompativel> receitasCompativeis = new ArrayList<>();
-        for (Receita r : receitas) {
-            int percentagem = r.comparaIngredientes(ingredientes);
+        for (int i = 0; i < receitas.size(); i++) {
+            int percentagem = receitas.get(i).comparaIngredientes(ingredientes);
             if (percentagem > 0) {
-                ReceitaCompativel x = new ReceitaCompativel(r, percentagem);
+                ReceitaCompativel x = new ReceitaCompativel(receitas.get(i), percentagem, i);
                 receitasCompativeis.add(x);
             }
         }
@@ -208,8 +208,8 @@ public class LivroReceitas implements Serializable, Variables {
             return false;
         }
 
-        for (Receita r : receitas) {
-            if (r.getNome().equals(nome)) {
+        for (int i = 0; i < receitas.size(); i++) {
+            if (receitas.get(i).getNome().equals(nome) && id != i) {
                 return false;
             }
         }
@@ -219,7 +219,7 @@ public class LivroReceitas implements Serializable, Variables {
         receitas.get(id).setNPessoas(pessoas);
         receitas.get(id).setPassos(passos);
         receitas.get(id).setcalorias();
-        
+
         return true;
     }
 
@@ -234,11 +234,12 @@ public class LivroReceitas implements Serializable, Variables {
         receitas.remove(id);
         return true;
     }
-    
-    public Ingrediente getIngrediente(String nome){
-        for(Ingrediente i: ingredientes){
-            if(i.getNome().equalsIgnoreCase(nome))
+
+    public Ingrediente getIngrediente(String nome) {
+        for (Ingrediente i : ingredientes) {
+            if (i.getNome().equalsIgnoreCase(nome)) {
                 return i;
+            }
         }
         return null;
     }

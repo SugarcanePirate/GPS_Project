@@ -38,7 +38,7 @@ public class Modelo implements Variables {
     /*
     *Método para pesquisa de receitas
      */
-    public ArrayList<ReceitaCompativel> pesquisaReceita(String[] ingredientes) {
+    public ArrayList<ReceitaCompativel> pesquisaReceita(ArrayList<String> ingredientes) {
         return livroReceitas.pesquisaReceitas(ingredientes);
     }
 
@@ -125,12 +125,12 @@ public class Modelo implements Variables {
 
         return 1;
     }
-    
-    public Ingrediente getIngrediente(String nome){
+
+    public Ingrediente getIngrediente(String nome) {
         return livroReceitas.getIngrediente(nome);
     }
-    
-    public DefaultListModel<String> returnNomeIngredientes(String tipo){
+
+    public DefaultListModel<String> returnNomeIngredientes(String tipo) {
         return livroReceitas.returnNomeIngredientes(tipo);
     }
 
@@ -147,7 +147,5 @@ public class Modelo implements Variables {
     public void setLivroReceitas(LivroReceitas livroReceitas) {
         this.livroReceitas = livroReceitas;
     }
-    
-  
 
 }

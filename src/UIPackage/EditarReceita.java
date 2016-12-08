@@ -5,21 +5,48 @@
  */
 package UIPackage;
 
+import LogicPackage.Ingrediente;
 import LogicPackage.Modelo;
+import LogicPackage.Receita;
+import LogicPackage.TipoAlimentos.Carne;
+import LogicPackage.TipoAlimentos.Cereal;
+import LogicPackage.TipoAlimentos.Fruta;
+import LogicPackage.TipoAlimentos.Lacticinios;
+import LogicPackage.TipoAlimentos.Leguminosas;
+import LogicPackage.TipoAlimentos.Oleos;
+import LogicPackage.TipoAlimentos.Peixe;
+import LogicPackage.TipoAlimentos.Vegetal;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class EditarReceita extends javax.swing.JFrame {
+
     Modelo l;
+    Receita r;
+    int id;
+    DefaultListModel<String> model;
+    ArrayList<Ingrediente> ing = null;
+    ProcurarReceita pr;
+
     /**
      * Creates new form EditarReceita
      */
-    public EditarReceita(Modelo l) {
+    public EditarReceita(Modelo l, Receita r, int id, ProcurarReceita pr) {
         initComponents();
-        this.l=l;
+        this.l = l;
+        this.r = r;
+        this.id = id;
+        this.pr = pr;
+        model = new DefaultListModel<>();
+        ing = r.getIngredientes();
+        //initComponents();
+        preenche();
     }
+
     public EditarReceita() {
         initComponents();
     }
@@ -57,6 +84,8 @@ public class EditarReceita extends javax.swing.JFrame {
         listIngDisp = new javax.swing.JList<>();
         boxTipoIngrediente = new javax.swing.JComboBox<>();
         bEliminarR = new javax.swing.JButton();
+        txtGramas = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,7 +99,7 @@ public class EditarReceita extends javax.swing.JFrame {
         lTituloR.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lTituloR.setText("Editar Receita");
 
-        bAcrescentarIngrediente.setText("Acrescentar Ingrediente");
+        bAcrescentarIngrediente.setText("Acrescentar ");
         bAcrescentarIngrediente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bAcrescentarIngredienteActionPerformed(evt);
@@ -139,6 +168,10 @@ public class EditarReceita extends javax.swing.JFrame {
             }
         });
 
+        txtGramas.setToolTipText("");
+
+        jLabel1.setText("Gramas:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -159,6 +192,10 @@ public class EditarReceita extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(bEliminarR)
+                                    .addGap(409, 409, 409)
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(txtGramas, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(bAcrescentarIngrediente))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
@@ -228,7 +265,10 @@ public class EditarReceita extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAcrescentarIngrediente)
-                    .addComponent(bEliminarR))
+                    .addComponent(bEliminarR)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(txtGramas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(lmetododepreparacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -260,30 +300,131 @@ public class EditarReceita extends javax.swing.JFrame {
     }//GEN-LAST:event_bUploadActionPerformed
 
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
-        // TODO add your handling code here:
+
+        for (Ingrediente i : ing) {
+            if (i.getNome().equals(listIngDisp.getSelectedValue())) {
+                return;
+            }
+        }
+
+        int g = 0;
+
+        String tipo = boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex());
+        tipo = tipo.toLowerCase();
+        Ingrediente i = l.getIngrediente(listIngDisp.getSelectedValue());
+
+        if (txtGramas.getText().equals(" ")) {
+            return;
+        }
+
+        try {
+            g = Integer.parseInt(txtGramas.getText());
+        } catch (NumberFormatException e) {
+            return;
+        }
+        for (Ingrediente x : ing) {
+            if (x.getNome().equals(listIngDisp.getSelectedValue())) {
+                return;
+            }
+        }
+
+        listIngSelec.setModel(model);
+        model.addElement(listIngDisp.getSelectedValue() + " " + g + "g");
+
+        switch (tipo) {
+            case "carne":
+                ing.add(new Carne(i.getNome(), i.getCalorias(), g));
+                break;
+            case "cereal":
+                ing.add(new Cereal(i.getNome(), i.getCalorias(), g));
+                break;
+            case "fruta":
+                ing.add(new Fruta(i.getNome(), i.getCalorias(), g));
+                break;
+            case "lacticinios":
+                ing.add(new Lacticinios(i.getNome(), i.getCalorias(), g));
+                break;
+            case "leguminosas":
+                ing.add(new Leguminosas(i.getNome(), i.getCalorias(), g));
+                break;
+            case "oleos":
+                ing.add(new Oleos(i.getNome(), i.getCalorias(), g));
+                break;
+            case "peixe":
+                ing.add(new Peixe(i.getNome(), i.getCalorias(), g));
+                break;
+            case "vegetal":
+                ing.add(new Vegetal(i.getNome(), i.getCalorias(), g));
+                break;
+            default:
+                break;
+        }
 
     }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
 
     private void boxTipoIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoIngredienteActionPerformed
-        // TODO add your handling code here:
-        
+        listIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
+
     }//GEN-LAST:event_boxTipoIngredienteActionPerformed
 
     private void bEliminarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarRActionPerformed
-        // TODO add your handling code here:
+        if (listIngSelec.getSelectedIndex() < 0) {
+            return;
+        }
+
+        ing.remove(listIngSelec.getSelectedIndex());
+
+        model.remove(listIngSelec.getSelectedIndex());
+        listIngSelec.setModel(model);
     }//GEN-LAST:event_bEliminarRActionPerformed
 
     private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
-        // TODO add your handling code here:
+        if (ing.isEmpty()) {
+            return;
+        }
+        if (textFieldTituloReceita.getText().equals("") || textFieldNPessoas.getText().equals("") || testAreaMetodoDePreparacao.getText().equals("")) {
+            return;
+        }
+        int nPessoas = 0;
+
+        try {
+            nPessoas = Integer.parseInt(textFieldNPessoas.getText());
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText())) {
+            return;
+        }
+
+        ProcurarReceita npr = new ProcurarReceita(l);
+        npr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bGuardarReceitaActionPerformed
 
     private void bEliminaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminaReceitaActionPerformed
-        // TODO add your handling code here:
+        if (!l.eliminaReceita(id)) {
+            return;
+        }
+        ProcurarReceita npr = new ProcurarReceita(l);
+        npr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bEliminaReceitaActionPerformed
 
     private void bVoltaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltaAActionPerformed
-        // TODO add your handling code here:
+        pr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bVoltaAActionPerformed
+
+    private void preenche() {
+        textFieldTituloReceita.setText(r.getNome());
+        textFieldNPessoas.setText("" + r.nPessoas());
+        testAreaMetodoDePreparacao.setText(r.getPassos());
+        for (Ingrediente i : ing) {
+            model.addElement(i.getNome() + " " + i.getQuantidade() + "g");
+        }
+        listIngSelec.setModel(model);
+    }
 
     /**
      * @param args the command line arguments
@@ -292,7 +433,7 @@ public class EditarReceita extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -328,6 +469,7 @@ public class EditarReceita extends javax.swing.JFrame {
     private javax.swing.JButton bUpload;
     private javax.swing.JButton bVoltaA;
     private javax.swing.JComboBox<String> boxTipoIngrediente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -345,5 +487,6 @@ public class EditarReceita extends javax.swing.JFrame {
     private javax.swing.JTextArea testAreaMetodoDePreparacao;
     private javax.swing.JTextField textFieldNPessoas;
     private javax.swing.JTextField textFieldTituloReceita;
+    private javax.swing.JTextField txtGramas;
     // End of variables declaration//GEN-END:variables
 }

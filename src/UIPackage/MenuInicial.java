@@ -1,20 +1,24 @@
-
 package UIPackage;
 
 import LogicPackage.Modelo;
 
 public class MenuInicial extends javax.swing.JFrame {
+
     Modelo l;
+
     /**
      * Creates new form MenuInicial
      */
     public MenuInicial() {
         initComponents();
-        l  = new Modelo();
+        l = new Modelo();
     }
-    
-    
-  
+
+    public MenuInicial(Modelo l) {
+        initComponents();
+        this.l = l;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -100,7 +104,7 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void bProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProcurarActionPerformed
         // TODO add your handling code here:
-        ProcurarReceita pr = new ProcurarReceita();
+        ProcurarReceita pr = new ProcurarReceita(l);
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bProcurarActionPerformed
@@ -119,7 +123,7 @@ public class MenuInicial extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -143,7 +147,7 @@ public class MenuInicial extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuInicial().setVisible(true);
-                
+
             }
         });
     }

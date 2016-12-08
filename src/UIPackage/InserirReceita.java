@@ -23,10 +23,11 @@ import javax.swing.DefaultListModel;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class InserirReceita extends javax.swing.JFrame {
-    
+
     Modelo l;
     DefaultListModel<String> model;
     ArrayList<Ingrediente> ing = null;
+
     /**
      * Creates new form InserirReceita
      */
@@ -34,12 +35,12 @@ public class InserirReceita extends javax.swing.JFrame {
         initComponents();
         model = new DefaultListModel<>();
         ing = new ArrayList<>();
-        this.l=l;
+        this.l = l;
     }
+
     public InserirReceita() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -274,10 +275,13 @@ public class InserirReceita extends javax.swing.JFrame {
 
     private void bEliminarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarIngredienteActionPerformed
         // TODO add your handling code here:
-        
-        if(lstIngSelec.getSelectedIndex() < 0)
+
+        if (lstIngSelec.getSelectedIndex() < 0) {
             return;
-        
+        }
+
+        ing.remove(lstIngSelec.getSelectedIndex());
+
         model.remove(lstIngSelec.getSelectedIndex());
         lstIngSelec.setModel(model);
     }//GEN-LAST:event_bEliminarIngredienteActionPerformed
@@ -288,56 +292,65 @@ public class InserirReceita extends javax.swing.JFrame {
 
     private void boxTipoIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxTipoIngredienteActionPerformed
         // TODO add your handling code here:
-            lstIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
+        lstIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
     }//GEN-LAST:event_boxTipoIngredienteActionPerformed
 
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
-        // TODO add your handling code here:
+
+        for (Ingrediente i : ing) {
+            if (i.getNome().equals(lstIngDisp.getSelectedValue())) {
+                return;
+            }
+        }
+
         int g = 0;
-        
+
         String tipo = boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex());
         tipo = tipo.toLowerCase();
         Ingrediente i = l.getIngrediente(lstIngDisp.getSelectedValue());
-        
-        
+
         if (txtGramas.getText().equals(" ")) {
             return;
         }
-        
 
         try {
             g = Integer.parseInt(txtGramas.getText());
         } catch (NumberFormatException e) {
             return;
         }
+        for (Ingrediente x : ing) {
+            if (x.getNome().equals(lstIngDisp.getSelectedValue())) {
+                return;
+            }
+        }
 
         lstIngSelec.setModel(model);
         model.addElement(lstIngDisp.getSelectedValue() + " " + g + "g");
-        
-        switch(tipo){
+
+        switch (tipo) {
             case "carne":
-                ing.add(new Carne(i.getNome(),i.getCalorias(), g));
+                ing.add(new Carne(i.getNome(), i.getCalorias(), g));
                 break;
             case "cereal":
-                ing.add(new Cereal(i.getNome(),i.getCalorias(), g));
+                ing.add(new Cereal(i.getNome(), i.getCalorias(), g));
                 break;
             case "fruta":
-                ing.add(new Fruta(i.getNome(),i.getCalorias(), g));
+                ing.add(new Fruta(i.getNome(), i.getCalorias(), g));
                 break;
             case "lacticinios":
-                ing.add(new Lacticinios(i.getNome(),i.getCalorias(), g));
+                ing.add(new Lacticinios(i.getNome(), i.getCalorias(), g));
                 break;
             case "leguminosas":
-                ing.add(new Leguminosas(i.getNome(),i.getCalorias(), g));
+                ing.add(new Leguminosas(i.getNome(), i.getCalorias(), g));
                 break;
-            case "oleos":                
-                ing.add(new Oleos(i.getNome(),i.getCalorias(), g));
+            case "oleos":
+                ing.add(new Oleos(i.getNome(), i.getCalorias(), g));
                 break;
             case "peixe":
-                ing.add(new Peixe(i.getNome(),i.getCalorias(), g));
+                ing.add(new Peixe(i.getNome(), i.getCalorias(), g));
                 break;
             case "vegetal":
-                ing.add(new Vegetal(i.getNome(),i.getCalorias(), g));
+                ing.add(new Vegetal(i.getNome(), i.getCalorias(), g));
                 break;
             default:
                 break;
@@ -345,27 +358,36 @@ public class InserirReceita extends javax.swing.JFrame {
     }//GEN-LAST:event_bAcrescentarIngredienteActionPerformed
 
     private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
-        // TODO add your handling code here:
-        if(txtTitulo.getText().equals("") || txtPessoas.getText().equals("") || taPreparacao.getText().equals(""))
-            return;
-        int nPessoas = 0;
-        
-        try{
-            nPessoas = Integer.parseInt(txtPessoas.getText());
-        }catch(NumberFormatException e){
+        if (ing.isEmpty()) {
             return;
         }
-        
-        l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText());
+        if (txtTitulo.getText().equals("") || txtPessoas.getText().equals("") || taPreparacao.getText().equals("")) {
+            return;
+        }
+        int nPessoas = 0;
+
+        try {
+            nPessoas = Integer.parseInt(txtPessoas.getText());
+        } catch (NumberFormatException e) {
+            return;
+        }
+
+        if (!l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText())) {
+            return;
+        }
+
+        InserirReceita ir = new InserirReceita(l);
+        ir.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bGuardarReceitaActionPerformed
 
     private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
         // TODO add your handling code here:
-        
-        MenuInicial mi = new MenuInicial();
+
+        MenuInicial mi = new MenuInicial(l);
         mi.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_bVoltarAtrasActionPerformed
 
     /**
@@ -375,7 +397,7 @@ public class InserirReceita extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -399,7 +421,7 @@ public class InserirReceita extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new InserirReceita().setVisible(true);
-            
+
             }
         });
     }
