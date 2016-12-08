@@ -24,6 +24,7 @@ public class ListarReceita extends javax.swing.JFrame {
      * Creates new form ListarReceita
      */
     public ListarReceita(Modelo l) {
+        l.recuperaReceitas();
         this.l = l;
         this.receitas = l.getLivroReceitas().getReceitas();
         initComponents();

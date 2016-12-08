@@ -33,6 +33,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
         ingredientes = new ArrayList<>();
         rCompativel = new ArrayList<>();
         this.l = l;
+        l.recuperaReceitas();
     }
 
     public ProcurarReceita() {
