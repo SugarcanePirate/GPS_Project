@@ -173,6 +173,7 @@ public class ListarReceita extends javax.swing.JFrame {
             return;
         }
 
+        l.guardarReceitas();
         model.remove(i);
     }//GEN-LAST:event_bEliminarReceitaActionPerformed
 

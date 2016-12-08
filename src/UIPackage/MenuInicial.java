@@ -10,9 +10,10 @@ public class MenuInicial extends javax.swing.JFrame {
      * Creates new form MenuInicial
      */
     public MenuInicial() {
-        l.criaPasta();
         initComponents();
         l = new Modelo();
+        l.criaPasta();
+        l.recuperaReceitas();
     }
 
     public MenuInicial(Modelo l) {

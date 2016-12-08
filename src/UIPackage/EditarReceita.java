@@ -306,6 +306,10 @@ public class EditarReceita extends javax.swing.JFrame {
 
     private void bAcrescentarIngredienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAcrescentarIngredienteActionPerformed
 
+        if (listIngDisp.getSelectedIndex() < 0) {
+            return;
+        }
+
         for (Ingrediente i : ing) {
             if (i.getNome().equals(listIngDisp.getSelectedValue())) {
                 return;
@@ -318,9 +322,9 @@ public class EditarReceita extends javax.swing.JFrame {
         tipo = tipo.toLowerCase();
         Ingrediente i = l.getIngrediente(listIngDisp.getSelectedValue());
 
-        if (txtGramas.getText().equals(" ") || i.getNome()==null) {
-             JOptionPane.showMessageDialog(null, "Não tem ingredientes/gramas selecionados!", "Warning",
-                 JOptionPane.WARNING_MESSAGE);
+        if (txtGramas.getText().equals(" ") || i.getNome() == null) {
+            JOptionPane.showMessageDialog(null, "Não tem ingredientes/gramas selecionados!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -390,28 +394,29 @@ public class EditarReceita extends javax.swing.JFrame {
             return;
         }
         if (textFieldTituloReceita.getText().equals("") || textFieldNPessoas.getText().equals("") || testAreaMetodoDePreparacao.getText().equals("")) {
-           JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
-                 JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
         int nPessoas = 0;
 
         try {
             nPessoas = Integer.parseInt(textFieldNPessoas.getText());
-            if(nPessoas > 4){
-                 JOptionPane.showMessageDialog(null, "Nºde Pessoas não deve ser > 4!", "Warning",
-                 JOptionPane.WARNING_MESSAGE);
-            return;}
+            if (nPessoas > 4) {
+                JOptionPane.showMessageDialog(null, "Nºde Pessoas não deve ser > 4!", "Warning",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
         } catch (NumberFormatException e) {
             return;
         }
 
         if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText())) {
-             JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
-                 JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         l.guardarReceitas();
 
         if (pr instanceof ListarReceita) {
@@ -433,6 +438,8 @@ public class EditarReceita extends javax.swing.JFrame {
         } else if (pr instanceof ProcurarReceita) {
             pr = new ProcurarReceita(l);
         }
+
+        l.guardarReceitas();
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bEliminaReceitaActionPerformed

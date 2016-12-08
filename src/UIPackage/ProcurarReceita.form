@@ -79,7 +79,7 @@
                                   <Component id="bEliminaI" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="300" pref="324" max="32767" attributes="0"/>
+                          <EmptySpace min="300" pref="313" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="bAcrescentarReceita" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -138,7 +138,7 @@
                       <Component id="bEditarReceita" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                       <Component id="bVerReceita" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <EmptySpace pref="27" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
