@@ -261,4 +261,8 @@ public class LivroReceitas implements Serializable, Variables {
     public void setReceitas(ArrayList<Receita> receitas) {
         this.receitas = receitas;
     }
+    
+    public void setIngredientes(ArrayList<Ingrediente> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
 }
