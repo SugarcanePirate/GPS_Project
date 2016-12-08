@@ -433,13 +433,13 @@ public class EditarReceita extends javax.swing.JFrame {
             return;
         }
 
+        l.guardarReceitas();
+
         if (pr instanceof ListarReceita) {
             pr = new ListarReceita(l);
         } else if (pr instanceof ProcurarReceita) {
             pr = new ProcurarReceita(l);
         }
-
-        l.guardarReceitas();
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bEliminaReceitaActionPerformed
