@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package LogicPackage;
 
 import LogicPackage.Receita;
@@ -18,10 +14,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import junit.framework.TestCase;
-/**
- *
- * @author joaom
- */
+
 public class ReceitaTest extends TestCase{
        
     private Receita r;
@@ -67,7 +60,12 @@ public class ReceitaTest extends TestCase{
     @Test
     public void testGetIngredientes() {
         inicializaReceita();
-        
+        Carne carne = new Carne("Vaca", 100, 2);
+        Peixe peixe = new Peixe("Salmão", 100, 2);
+        ArrayList<Ingrediente> aux = new ArrayList<>();
+        aux.add(carne);
+        aux.add(peixe);
+      assertEquals(aux, r.getIngredientes());
     }
 
     /**
@@ -75,13 +73,10 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testNPessoas() {
-        System.out.println("nPessoas");
-        Receita instance = null;
-        int expResult = 0;
-        int result = instance.nPessoas();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        int aux = 2;
+        
+        assertEquals(r.nPessoas(), aux);
     }
 
     /**
@@ -89,13 +84,10 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testGetCalorias() {
-        System.out.println("getCalorias");
-        Receita instance = null;
-        int expResult = 0;
-        int result = instance.getCalorias();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        int aux = 4;
+        
+        assertEquals(r.getCalorias(), aux);
     }
 
     /**
@@ -103,13 +95,9 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testGetPassos() {
-        System.out.println("getPassos");
-        Receita instance = null;
-        String expResult = "";
-        String result = instance.getPassos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        
+        assertEquals(r.getPassos(), "fazer primeiro refogado");
     }
 
     /**
@@ -117,12 +105,11 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testSetNome() {
-        System.out.println("setNome");
-        String nome = "";
-        Receita instance = null;
-        instance.setNome(nome);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        
+        r.setNome("Carne Alentejana");
+        
+        assertEquals(r.getNome(), "Carne Alentejana");
     }
 
     /**
@@ -130,12 +117,15 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testSetIngredientes() {
-        System.out.println("setIngredientes");
-        ArrayList<Ingrediente> ingredientes = null;
-        Receita instance = null;
-        instance.setIngredientes(ingredientes);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        Carne carne = new Carne("Lombo", 100, 2);
+        Peixe peixe = new Peixe("Dourada", 100, 2);
+        ArrayList<Ingrediente> aux1 = new ArrayList<>();
+        aux1.add(carne);
+        aux1.add(peixe);
+        r.setIngredientes(aux1);
+        
+        assertEquals(r.getIngredientes(), aux1);
     }
 
     /**
@@ -143,12 +133,10 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testSetNPessoas() {
-        System.out.println("setNPessoas");
-        int nPessoas = 0;
-        Receita instance = null;
-        instance.setNPessoas(nPessoas);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        r.setNPessoas(8);
+        
+        assertEquals(r.nPessoas(), 8);
     }
 
     /**
@@ -156,11 +144,16 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testSetcalorias() {
-        System.out.println("setcalorias");
-        Receita instance = null;
-        instance.setcalorias();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        Carne carne = new Carne("Lombo", 100, 2);
+        Peixe peixe = new Peixe("Dourada", 100, 2);
+        ArrayList<Ingrediente> aux1 = new ArrayList<>();
+        aux1.add(carne);
+        aux1.add(peixe);
+        Receita r1 = new Receita("Mista", ingredientes, 2, "fazer primeiro refogado");
+        
+        r1.setcalorias();
+        assertEquals(r.getCalorias(), r1.getCalorias());
     }
 
     /**
@@ -168,12 +161,10 @@ public class ReceitaTest extends TestCase{
      */
     @Test
     public void testSetPassos() {
-        System.out.println("setPassos");
-        String passos = "";
-        Receita instance = null;
-        instance.setPassos(passos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        inicializaReceita();
+        r.setPassos("nunca fazer refogado sem azeite");
+        
+        assertEquals(r.getPassos(), "nunca fazer refogado sem azeite");
     }
     
 }
