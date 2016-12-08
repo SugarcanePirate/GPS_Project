@@ -19,6 +19,7 @@ import LogicPackage.TipoAlimentos.Vegetal;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -264,12 +265,13 @@ public class EditarReceita extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAcrescentarIngrediente)
-                    .addComponent(bEliminarR)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtGramas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtGramas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bAcrescentarIngrediente)
+                        .addComponent(bEliminarR)))
                 .addGap(18, 18, 18)
                 .addComponent(lmetododepreparacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -384,17 +386,25 @@ public class EditarReceita extends javax.swing.JFrame {
             return;
         }
         if (textFieldTituloReceita.getText().equals("") || textFieldNPessoas.getText().equals("") || testAreaMetodoDePreparacao.getText().equals("")) {
+           JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
         int nPessoas = 0;
 
         try {
             nPessoas = Integer.parseInt(textFieldNPessoas.getText());
+            if(nPessoas > 4){
+                 JOptionPane.showMessageDialog(null, "Nºde Pessoas não deve ser > 4!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
+            return;}
         } catch (NumberFormatException e) {
             return;
         }
 
         if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText())) {
+             JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 

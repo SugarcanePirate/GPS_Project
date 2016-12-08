@@ -18,6 +18,7 @@ import LogicPackage.TipoAlimentos.Vegetal;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -365,17 +366,25 @@ public class InserirReceita extends javax.swing.JFrame {
             return;
         }
         if (txtTitulo.getText().equals("") || txtPessoas.getText().equals("") || taPreparacao.getText().equals("")) {
+           JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
         int nPessoas = 0;
 
         try {
             nPessoas = Integer.parseInt(txtPessoas.getText());
+            if(nPessoas > 4){
+                 JOptionPane.showMessageDialog(null, "Nºde Pessoas não deve ser > 4!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
+            return;}
         } catch (NumberFormatException e) {
             return;
         }
 
         if (!l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText())) {
+            JOptionPane.showMessageDialog(null, "Campos por preencher!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 

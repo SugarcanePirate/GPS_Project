@@ -9,6 +9,7 @@ import LogicPackage.Modelo;
 import LogicPackage.ReceitaCompativel;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -246,13 +247,19 @@ public class ProcurarReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bProcuraRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProcuraRActionPerformed
+        
+        m.removeAllElements();
         if (ingredientes.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Não tem ingredientes selecionados!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         rCompativel = l.getLivroReceitas().pesquisaReceitas(ingredientes);
 
         if (rCompativel.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Não foram encontradas receitas compativéis!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -265,6 +272,8 @@ public class ProcurarReceita extends javax.swing.JFrame {
 
     private void bEliminaIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminaIActionPerformed
         if (lstIngSelec.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Deve selecionar pelo menos um ingrediente", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 
@@ -282,6 +291,8 @@ public class ProcurarReceita extends javax.swing.JFrame {
         ProcurarReceita r = this;
 
         if (listReceitasEncontradas.getSelectedIndex() < 0) {
+            JOptionPane.showMessageDialog(null, "Deve selecionar uma receita!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
         int i = listReceitasEncontradas.getSelectedIndex();
@@ -298,6 +309,8 @@ public class ProcurarReceita extends javax.swing.JFrame {
         }
 
         if (!l.eliminaReceita(rCompativel.get(i).getId())) {
+            JOptionPane.showMessageDialog(null, "Deve selecionar uma receita!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 
