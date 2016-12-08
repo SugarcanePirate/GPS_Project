@@ -96,6 +96,7 @@ public class Receita implements Serializable {
     }
 
     public void setcalorias() {
+        calorias = 0;
         for (Ingrediente ingrediente : ingredientes) {
             calorias += ingrediente.getCalorias() * ingrediente.getQuantidade() / 100;
         }
