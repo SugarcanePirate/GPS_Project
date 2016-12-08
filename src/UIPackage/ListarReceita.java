@@ -5,17 +5,44 @@
  */
 package UIPackage;
 
+import LogicPackage.Modelo;
+import LogicPackage.Receita;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class ListarReceita extends javax.swing.JFrame {
 
+    Modelo l;
+    ArrayList<Receita> receitas;
+    DefaultListModel<String> model;
+
     /**
      * Creates new form ListarReceita
      */
+    public ListarReceita(Modelo l) {
+        this.l = l;
+        this.receitas = l.getLivroReceitas().getReceitas();
+        initComponents();
+        preenche();
+    }
+
     public ListarReceita() {
         initComponents();
+    }
+
+    private void preenche() {
+
+        model = new DefaultListModel<>();
+
+        for (Receita r : receitas) {
+            model.addElement(r.getNome());
+        }
+
+        lListaR.setModel(model);
     }
 
     /**
@@ -85,11 +112,6 @@ public class ListarReceita extends javax.swing.JFrame {
             }
         });
 
-        lListaR.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lListaR);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -152,27 +174,59 @@ public class ListarReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bEliminarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarReceitaActionPerformed
-        // TODO add your handling code here:
+        int i = lListaR.getSelectedIndex();
+        if (i < 0) {
+            return;
+        }
+
+        if (!l.eliminaReceita(i)) {
+            return;
+        }
+
+        model.remove(i);
     }//GEN-LAST:event_bEliminarReceitaActionPerformed
 
     private void bInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInicialActionPerformed
-        // TODO add your handling code here:
+        MenuInicial mi = new MenuInicial(l);
+        mi.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bInicialActionPerformed
 
     private void bVerReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerReceitaActionPerformed
-        // TODO add your handling code here:
+        int i = lListaR.getSelectedIndex();
+        if (i < 0) {
+            return;
+        }
+
+        VerReceita vr = new VerReceita(l, receitas.get(i), this);
+        vr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bVerReceitaActionPerformed
 
     private void bInserirReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInserirReceitaActionPerformed
-        // TODO add your handling code here:
+        InserirReceita ir = new InserirReceita(l, this);
+        ir.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bInserirReceitaActionPerformed
 
     private void bEditarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEditarReceitaActionPerformed
-        // TODO add your handling code here:
+        ListarReceita lr = this;
+
+        if (lListaR.getSelectedIndex() < 0) {
+            return;
+        }
+
+        int i = lListaR.getSelectedIndex();
+
+        EditarReceita ed = new EditarReceita(l, receitas.get(i), i, lr);
+        ed.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bEditarReceitaActionPerformed
 
     private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
-        // TODO add your handling code here:
+        MenuInicial mi = new MenuInicial(l);
+        mi.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bVoltarAtrasActionPerformed
 
     /**
@@ -182,7 +236,7 @@ public class ListarReceita extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

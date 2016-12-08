@@ -5,17 +5,43 @@
  */
 package UIPackage;
 
-/**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
+import LogicPackage.Ingrediente;
+import LogicPackage.Modelo;
+import LogicPackage.Receita;
+import javax.swing.JFrame;
+
 public class VerReceita extends javax.swing.JFrame {
+
+    Modelo l;
+    Receita r;
+    JFrame fr;
 
     /**
      * Creates new form VerReceita
      */
+    public VerReceita(Modelo l, Receita r, JFrame fr) {
+        initComponents();
+        this.fr = fr;
+        this.l = l;
+        this.r = r;
+        preenche();
+    }
+
     public VerReceita() {
         initComponents();
+    }
+
+    private void preenche() {
+        lNPessoas.setText("Nº de pessoas: " + r.nPessoas());
+        String ing = "Ingredientes: ";
+        for (Ingrediente i : r.getIngredientes()) {
+            ing += i.getNome() + " " + i.getQuantidade() + "g\n";
+        }
+        lIngredientes.setText(ing);
+
+        lCalorias.setText("Calorias: " + r.getCalorias());
+
+        lMetodoPrep.setText(r.getPassos());
     }
 
     /**
@@ -52,13 +78,13 @@ public class VerReceita extends javax.swing.JFrame {
             }
         });
 
-        lNPessoas.setText("Nº de Pessoas: ...");
+        lNPessoas.setText("Nº de Pessoas: ");
 
-        lIngredientes.setText("Ingredientes: ...");
+        lIngredientes.setText("Ingredientes: ");
 
         jScrollPane1.setViewportView(eMetodoPrep);
 
-        lCalorias.setText("Calorias: ...");
+        lCalorias.setText("Calorias: ");
 
         lMetodoPrep.setText("Método de Preparação: ...");
 
@@ -74,13 +100,13 @@ public class VerReceita extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lIngredientes)
-                            .addComponent(lNPessoas)
                             .addComponent(lCalorias)
-                            .addComponent(lMetodoPrep)))
+                            .addComponent(lMetodoPrep)
+                            .addComponent(lNPessoas)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(424, 424, 424)
                         .addComponent(lTitulo)))
-                .addContainerGap(432, Short.MAX_VALUE))
+                .addContainerGap(442, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(bVoltar)
@@ -104,7 +130,7 @@ public class VerReceita extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                 .addComponent(bVoltar)
                 .addGap(26, 26, 26))
         );
@@ -127,7 +153,8 @@ public class VerReceita extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarActionPerformed
-        // TODO add your handling code here:
+        fr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_bVoltarActionPerformed
 
     /**
@@ -137,7 +164,7 @@ public class VerReceita extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

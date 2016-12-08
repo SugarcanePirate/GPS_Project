@@ -18,6 +18,7 @@ import LogicPackage.TipoAlimentos.Peixe;
 import LogicPackage.TipoAlimentos.Vegetal;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -30,12 +31,12 @@ public class EditarReceita extends javax.swing.JFrame {
     int id;
     DefaultListModel<String> model;
     ArrayList<Ingrediente> ing = null;
-    ProcurarReceita pr;
+    JFrame pr;
 
     /**
      * Creates new form EditarReceita
      */
-    public EditarReceita(Modelo l, Receita r, int id, ProcurarReceita pr) {
+    public EditarReceita(Modelo l, Receita r, int id, JFrame pr) {
         initComponents();
         this.l = l;
         this.r = r;
@@ -397,8 +398,12 @@ public class EditarReceita extends javax.swing.JFrame {
             return;
         }
 
-        ProcurarReceita npr = new ProcurarReceita(l);
-        npr.setVisible(true);
+        if (pr instanceof ListarReceita) {
+            pr = new ListarReceita(l);
+        } else if (pr instanceof ProcurarReceita) {
+            pr = new ProcurarReceita(l);
+        }
+        pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bGuardarReceitaActionPerformed
 
@@ -406,12 +411,21 @@ public class EditarReceita extends javax.swing.JFrame {
         if (!l.eliminaReceita(id)) {
             return;
         }
-        ProcurarReceita npr = new ProcurarReceita(l);
-        npr.setVisible(true);
+
+        if (pr instanceof ListarReceita) {
+            pr = new ListarReceita(l);
+        } else if (pr instanceof ProcurarReceita) {
+            pr = new ProcurarReceita(l);
+        }
+        pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bEliminaReceitaActionPerformed
 
     private void bVoltaAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltaAActionPerformed
+        if (pr instanceof ListarReceita) {
+            pr = new ListarReceita(l);
+        }
+
         pr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bVoltaAActionPerformed

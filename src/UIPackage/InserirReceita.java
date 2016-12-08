@@ -17,6 +17,7 @@ import LogicPackage.TipoAlimentos.Peixe;
 import LogicPackage.TipoAlimentos.Vegetal;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -27,12 +28,14 @@ public class InserirReceita extends javax.swing.JFrame {
     Modelo l;
     DefaultListModel<String> model;
     ArrayList<Ingrediente> ing = null;
+    JFrame fr;
 
     /**
      * Creates new form InserirReceita
      */
-    public InserirReceita(Modelo l) {
+    public InserirReceita(Modelo l, JFrame fr) {
         initComponents();
+        this.fr = fr;
         model = new DefaultListModel<>();
         ing = new ArrayList<>();
         this.l = l;
@@ -376,16 +379,18 @@ public class InserirReceita extends javax.swing.JFrame {
             return;
         }
 
-        InserirReceita ir = new InserirReceita(l);
+        InserirReceita ir = new InserirReceita(l, fr);
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bGuardarReceitaActionPerformed
 
     private void bVoltarAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVoltarAtrasActionPerformed
-        // TODO add your handling code here:
-
-        MenuInicial mi = new MenuInicial(l);
-        mi.setVisible(true);
+        if (fr instanceof ListarReceita) {
+            fr = new ListarReceita(l);
+        } else if (fr instanceof MenuInicial) {
+            fr = new MenuInicial(l);
+        }
+        fr.setVisible(true);
         this.dispose();
 
     }//GEN-LAST:event_bVoltarAtrasActionPerformed

@@ -65,6 +65,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         lstIngDisp = new javax.swing.JList<>();
         boxTipoIngrediente = new javax.swing.JComboBox<>();
+        bVerReceita = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(new java.awt.Dimension(950, 550));
@@ -137,6 +138,13 @@ public class ProcurarReceita extends javax.swing.JFrame {
             }
         });
 
+        bVerReceita.setText("Ver Receita");
+        bVerReceita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bVerReceitaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -173,14 +181,16 @@ public class ProcurarReceita extends javax.swing.JFrame {
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(84, 84, 84))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(bVerReceita, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(65, 65, 65)
                                 .addComponent(bEditarReceita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(48, 48, 48)
                                 .addComponent(bEliminarReceita)
-                                .addGap(188, 188, 188)
-                                .addComponent(bVoltaratrás)))
+                                .addGap(191, 191, 191)
+                                .addComponent(bVoltaratrás))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -214,7 +224,8 @@ public class ProcurarReceita extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bVoltaratrás, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bEliminarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bEditarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bEditarReceita, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bVerReceita))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -318,6 +329,17 @@ public class ProcurarReceita extends javax.swing.JFrame {
         lstIngDisp.setModel(l.returnNomeIngredientes(boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex())));
     }//GEN-LAST:event_boxTipoIngredienteActionPerformed
 
+    private void bVerReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bVerReceitaActionPerformed
+        int i = listReceitasEncontradas.getSelectedIndex();
+        if (i < 0) {
+            return;
+        }
+
+        VerReceita vr = new VerReceita(l, rCompativel.get(i).getReceita(), this);
+        vr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bVerReceitaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -360,6 +382,7 @@ public class ProcurarReceita extends javax.swing.JFrame {
     private javax.swing.JButton bEliminaI;
     private javax.swing.JButton bEliminarReceita;
     private javax.swing.JButton bProcuraR;
+    private javax.swing.JButton bVerReceita;
     private javax.swing.JButton bVoltaratrás;
     private javax.swing.JComboBox<String> boxTipoIngrediente;
     private javax.swing.JPanel jPanel1;

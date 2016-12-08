@@ -39,6 +39,11 @@ public class MenuInicial extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(950, 550));
 
         bListar.setLabel("Listar Receitas");
+        bListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bListarActionPerformed(evt);
+            }
+        });
 
         bProcurar.setText("Procurar Receitas");
         bProcurar.addActionListener(new java.awt.event.ActionListener() {
@@ -111,10 +116,16 @@ public class MenuInicial extends javax.swing.JFrame {
 
     private void bAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAdicionarActionPerformed
         // TODO add your handling code here:
-        InserirReceita ir = new InserirReceita(l);
+        InserirReceita ir = new InserirReceita(l, this);
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_bAdicionarActionPerformed
+
+    private void bListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bListarActionPerformed
+        ListarReceita lr = new ListarReceita(l);
+        lr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_bListarActionPerformed
 
     /**
      * @param args the command line arguments

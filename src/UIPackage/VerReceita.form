@@ -58,9 +58,9 @@
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lIngredientes" min="-2" max="-2" attributes="0"/>
-                              <Component id="lNPessoas" min="-2" max="-2" attributes="0"/>
                               <Component id="lCalorias" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lMetodoPrep" min="-2" max="-2" attributes="0"/>
+                              <Component id="lNPessoas" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -68,7 +68,7 @@
                           <Component id="lTitulo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="432" max="32767" attributes="0"/>
+                  <EmptySpace pref="442" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -98,7 +98,7 @@
                           <Component id="jScrollPane1" min="-2" pref="264" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="118" max="32767" attributes="0"/>
+                  <EmptySpace pref="125" max="32767" attributes="0"/>
                   <Component id="bVoltar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
               </Group>
@@ -124,12 +124,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lNPessoas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="N&#xba; de Pessoas: ..."/>
+            <Property name="text" type="java.lang.String" value="N&#xba; de Pessoas: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lIngredientes">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ingredientes: ..."/>
+            <Property name="text" type="java.lang.String" value="Ingredientes: "/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -145,7 +145,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lCalorias">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Calorias: ..."/>
+            <Property name="text" type="java.lang.String" value="Calorias: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lMetodoPrep">
