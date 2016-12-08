@@ -1,29 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package LogicPackage;
 
 import LogicPackage.TipoAlimentos.Peixe;
+import static LogicPackage.Variables.TIPO_CARNE;
+import static LogicPackage.Variables.TIPO_PEIXE;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import junit.framework.TestCase;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import static junit.framework.TestCase.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-/**
- *
- * @author joaom
- */
 public class ModeloTest extends TestCase{
-    /**
-     * Test of adicionaIngrediente method, of class Modelo.
-     */
+    
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Receita> receitas;
     private LivroReceitas livro;
@@ -45,14 +33,14 @@ public class ModeloTest extends TestCase{
         m.setLivroReceitas(livro);
     }
     
+    /**
+     * Test of adicionaIngrediente method, of class Modelo.
+     */
     @Test
     public void testAdicionaIngrediente() {
         inicializaModelo();
-        
         livro.adicionaIngrediente("Peixe", "sardinha", 100);
         ing = new Peixe("sardinha", 100, 2);
-        
-        
         assertEquals(livro.getIngrediente("sardinha"), ing);
     }
 
@@ -62,7 +50,6 @@ public class ModeloTest extends TestCase{
     @Test
     public void testAdicionaReceitas() {
         inicializaModelo();
-       
         assertEquals(m.adicionaReceitas("bacalhau", ingredientes, 3, "Iniciar Receita"), true);
         assertEquals(m.adicionaReceitas("bacalhau", ingredientes, 3, "Iniciar Receita"), false);
     }
@@ -76,9 +63,7 @@ public class ModeloTest extends TestCase{
         ArrayList<String> ing1 = new ArrayList<>();
         ing1.add("Salmão");
         ing1.add("Maçã");
-        
         receitasCompativeis = m.pesquisaReceita(ing1);
-       
         assertEquals(receitasCompativeis.size(), 1);
         
     }
@@ -91,8 +76,7 @@ public class ModeloTest extends TestCase{
         Receita recAux = new Receita("Nome", ingredientes, 2, "Iniciar Receita");
         receitas.add(recAux);
         assertEquals(m.editaReceita(2, "Salmão", ingredientes, 2, "1ºPasso"), false);
-        assertEquals(m.editaReceita(1, "Massa à bolonhesa", ingredientes, 2, "1ºPasso"), true);
-        
+        assertEquals(m.editaReceita(1, "Massa à bolonhesa", ingredientes, 2, "1ºPasso"), true);   
     }
 
     /**
@@ -114,7 +98,6 @@ public class ModeloTest extends TestCase{
     @Test
     public void testGuardarReceitas() {
         inicializaModelo();
-        
         assertEquals(m.guardarReceitas(), true);
     }
 
@@ -124,7 +107,6 @@ public class ModeloTest extends TestCase{
     @Test
     public void testRecuperaReceitas() {
         inicializaModelo();
-        
         assertEquals(m.recuperaReceitas(), true);
     }
 
@@ -134,7 +116,6 @@ public class ModeloTest extends TestCase{
     @Test
     public void testCriaPasta() {
         inicializaModelo();
-        
         assertEquals(m.criaPasta(), 0);
     }
 
@@ -157,7 +138,11 @@ public class ModeloTest extends TestCase{
     @Test
     public void testReturnNomeIngredientes() {
         inicializaModelo();
-        
+        DefaultListModel<String> ingAux;
+        ingAux = m.returnNomeIngredientes(TIPO_PEIXE);
+        assertEquals(ingAux.size(), 1);
+        ingAux = m.returnNomeIngredientes(TIPO_CARNE);
+        assertEquals(ingAux.size(), 0);
     }
 
     /**
@@ -166,7 +151,7 @@ public class ModeloTest extends TestCase{
     @Test
     public void testGetLivroReceitas() {
         inicializaModelo();
-        Modelo m1 = new Modelo();
+        Modelo m1;
         m1 = m;       
         assertEquals(m.getLivroReceitas(), m1.getLivroReceitas());
     }
