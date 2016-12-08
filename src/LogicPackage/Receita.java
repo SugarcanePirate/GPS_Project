@@ -46,7 +46,7 @@ public class Receita implements Serializable {
         int percentagem;
         if (x == 0) {
             percentagem = 0;
-        } else if (x == ingredientes.size()) {
+        } else if (x == ingredientes.size() && ing.size() == ingredientes.size()) {
             percentagem = 100;
         } else if (ing.size() < ingredientes.size()) {
             percentagem = (x * 100) / ingredientes.size();
@@ -96,6 +96,7 @@ public class Receita implements Serializable {
     }
 
     public void setcalorias() {
+        calorias = 0;
         for (Ingrediente ingrediente : ingredientes) {
             calorias += ingrediente.getCalorias() * ingrediente.getQuantidade() / 100;
         }
