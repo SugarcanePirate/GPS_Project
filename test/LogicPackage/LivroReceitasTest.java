@@ -6,10 +6,10 @@ import static LogicPackage.Variables.TIPO_CARNE;
 import static LogicPackage.Variables.TIPO_PEIXE;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import junit.framework.TestCase;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
-public class LivroReceitasTest {
+public class LivroReceitasTest extends TestCase{
     
     private ArrayList<Ingrediente> ingredientes;
     private ArrayList<Receita> receitas;
@@ -45,7 +45,7 @@ public class LivroReceitasTest {
     @Test
     public void testPesquisaReceitas() {
         inicializaLivroReceitas();
-        ArrayList<ReceitaCompativel> receitasCompativeis = new ArrayList<>();
+        ArrayList<ReceitaCompativel> receitasCompativeis;
         ArrayList<String> ing = new ArrayList<>();
         ing.add("Salmão");
         ing.add("Maçã");
@@ -84,10 +84,8 @@ public class LivroReceitasTest {
         inicializaLivroReceitas();
         Receita recAux = new Receita("Nome", ingredientes, 2, "Iniciar Receita");
         receitas.add(recAux);
-        Boolean aux = livro.editaReceita(2, "Salmão", ingredientes, 2, "1ºPasso");
-        Boolean aux1 = livro.editaReceita(1, "Massa à bolonhesa", ingredientes, 2, "1ºPasso");
-        assertEquals(aux, false);
-        assertEquals(aux1, true);
+        assertEquals(livro.editaReceita(2, "Salmão", ingredientes, 2, "1ºPasso"), false);
+        assertEquals(livro.editaReceita(1, "Massa à bolonhesa", ingredientes, 2, "1ºPasso"), true);
     }
 
     /**
@@ -98,12 +96,9 @@ public class LivroReceitasTest {
         inicializaLivroReceitas();
         Receita recAux = new Receita("Nome", ingredientes, 2, "Iniciar Receita");
         receitas.add(recAux);
-        Boolean aux = livro.eliminaReceita(-1);
-        Boolean aux1 = livro.eliminaReceita(3);
-        Boolean aux2 = livro.eliminaReceita(1);
-        assertEquals(aux, false);
-        assertEquals(aux1, false);
-        assertEquals(aux2, true);
+        assertEquals(livro.eliminaReceita(-1), false);
+        assertEquals(livro.eliminaReceita(3), false);
+        assertEquals(livro.eliminaReceita(1), true);
     }
 
     /**

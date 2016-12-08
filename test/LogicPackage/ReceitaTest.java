@@ -1,18 +1,11 @@
 
 package LogicPackage;
 
-import LogicPackage.Receita;
-import LogicPackage.Ingrediente;
 import LogicPackage.TipoAlimentos.Carne;
 import LogicPackage.TipoAlimentos.Peixe;
 
 import java.util.ArrayList;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import junit.framework.TestCase;
 
 public class ReceitaTest extends TestCase{
