@@ -313,9 +313,24 @@ public class InserirReceita extends javax.swing.JFrame {
         String tipo = boxTipoIngrediente.getItemAt(boxTipoIngrediente.getSelectedIndex());
         tipo = tipo.toLowerCase();
         Ingrediente i = l.getIngrediente(lstIngDisp.getSelectedValue());
-
-        if (txtGramas.getText().equals(" ")) {
+        
+        try {
+        if (i.getNome()==null) {
+             JOptionPane.showMessageDialog(null, "Não tem ingredientes selecionados!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
+                    }           
+             } catch (NullPointerException e) {
             return;
+        
+        }
+         try {
+        if (txtGramas.getText().equals(" ") ) {
+             JOptionPane.showMessageDialog(null, "Não tem gramas!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
+                    }           
+             } catch (NullPointerException e) {
+            return;
+        
         }
 
         try {

@@ -145,7 +145,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="lCalorias">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Calorias: "/>
+            <Property name="text" type="java.lang.String" value="Calorias/100g: "/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lMetodoPrep">

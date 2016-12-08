@@ -318,7 +318,9 @@ public class EditarReceita extends javax.swing.JFrame {
         tipo = tipo.toLowerCase();
         Ingrediente i = l.getIngrediente(listIngDisp.getSelectedValue());
 
-        if (txtGramas.getText().equals(" ")) {
+        if (txtGramas.getText().equals(" ") || i.getNome()==null) {
+             JOptionPane.showMessageDialog(null, "Não tem ingredientes/gramas selecionados!", "Warning",
+                 JOptionPane.WARNING_MESSAGE);
             return;
         }
 

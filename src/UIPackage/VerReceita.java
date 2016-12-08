@@ -35,7 +35,7 @@ public class VerReceita extends javax.swing.JFrame {
         lNPessoas.setText("Nº de pessoas: " + r.nPessoas());
         String ing = "Ingredientes: ";
         for (Ingrediente i : r.getIngredientes()) {
-            ing += i.getNome() + " " + i.getQuantidade() + "g\n";
+            ing += i.getNome() + " " + i.getQuantidade()+ "g/ \n";
         }
         lIngredientes.setText(ing);
 
@@ -85,7 +85,7 @@ public class VerReceita extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(eMetodoPrep);
 
-        lCalorias.setText("Calorias: ");
+        lCalorias.setText("Calorias/100g: ");
 
         lMetodoPrep.setText("Método de Preparação: ...");
 
