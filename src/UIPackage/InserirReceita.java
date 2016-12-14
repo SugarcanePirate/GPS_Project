@@ -17,9 +17,9 @@ import LogicPackage.TipoAlimentos.Peixe;
 import LogicPackage.TipoAlimentos.Vegetal;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -306,12 +306,26 @@ public class InserirReceita extends javax.swing.JFrame {
             File file = fc.getSelectedFile();
             try {
                 camImg = file.getCanonicalPath();
+
+                String nomeDirectoria = System.getProperty("user.dir");
+
+                nomeDirectoria = nomeDirectoria + File.separator + "src" + File.separator + "UIPackage" + File.separator + "ImgPackage" + File.separator;
+
+                File directoria = new File(nomeDirectoria);
+                
+                File imagem = new File(nomeDirectoria + file.getName());
+                camImg = imagem.getCanonicalPath();
+                if (!directoria.exists()) {
+
+                    directoria.mkdir();
+                    Files.copy(file.toPath(), imagem.toPath(),REPLACE_EXISTING);
+                }else{
+                    Files.copy(file.toPath(), imagem.toPath(),REPLACE_EXISTING);
+                }
             } catch (IOException ex) {
-                System.out.println("Erro - ler imagem");
+                System.out.println("Erro");
             }
-           
-        } else {
-            
+
         }
         
     }//GEN-LAST:event_bUploadActionPerformed
@@ -419,7 +433,7 @@ public class InserirReceita extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             return;
         }
-
+        
         if (!l.adicionaReceitas(txtTitulo.getText(), ing, nPessoas, taPreparacao.getText(),camImg)) {
             JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
                  JOptionPane.WARNING_MESSAGE);

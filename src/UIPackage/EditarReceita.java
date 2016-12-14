@@ -18,6 +18,8 @@ import LogicPackage.TipoAlimentos.Peixe;
 import LogicPackage.TipoAlimentos.Vegetal;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -308,18 +310,32 @@ public class EditarReceita extends javax.swing.JFrame {
     private void bUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bUploadActionPerformed
         // TODO add your handling code here:
                 // TODO add your handling code here:
-        int returnVal = fc.showOpenDialog(this);
+         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             try {
                 camImg = file.getCanonicalPath();
+
+                String nomeDirectoria = System.getProperty("user.dir");
+
+                nomeDirectoria = nomeDirectoria + File.separator + "src" + File.separator + "UIPackage" + File.separator + "ImgPackage" + File.separator;
+
+                File directoria = new File(nomeDirectoria);
+                
+                File imagem = new File(nomeDirectoria + file.getName());
+                camImg = imagem.getCanonicalPath();
+                if (!directoria.exists()) {
+
+                    directoria.mkdir();
+                    Files.copy(file.toPath(), imagem.toPath(),REPLACE_EXISTING);
+                }else{
+                    Files.copy(file.toPath(), imagem.toPath(),REPLACE_EXISTING);
+                }
             } catch (IOException ex) {
-                System.out.println("Erro - ler imagem");
+                System.out.println("Erro");
             }
-           
-        } else {
-            
+
         }
     }//GEN-LAST:event_bUploadActionPerformed
 
