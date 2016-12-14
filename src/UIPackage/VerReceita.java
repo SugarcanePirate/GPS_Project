@@ -9,17 +9,11 @@ import LogicPackage.Ingrediente;
 import LogicPackage.Modelo;
 import LogicPackage.Receita;
 import java.awt.Image;
+import static java.awt.Image.SCALE_DEFAULT;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class VerReceita extends javax.swing.JFrame {
 
@@ -41,7 +35,10 @@ public class VerReceita extends javax.swing.JFrame {
         preenche();
         
         img = new ImageIcon(r.getCamImg());
- 
+        Image auxImagem = img.getImage();
+        
+        auxImagem = auxImagem.getScaledInstance(255, 255, SCALE_DEFAULT);
+        img = new ImageIcon(auxImagem);
         jLabel1.setIcon(img);
         
 //        im = new JLabel(){
@@ -61,16 +58,6 @@ public class VerReceita extends javax.swing.JFrame {
        
     }
 
-    
-    public Image getImagem() {
-                  URL url=UIPackage.Resources.class.getResource(r.getCamImg());
-        try {
-            return ImageIO.read(url);
-        } catch (IOException ex) {
-            Logger.getLogger(VerReceita.class.getName()).log(Level.SEVERE, null, ex);
-        }
-                    return null;
-    }
     
     
     public VerReceita() {

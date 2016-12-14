@@ -446,7 +446,7 @@ public class EditarReceita extends javax.swing.JFrame {
             return;
         }
 
-        if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText())) {
+        if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText(),camImg)) {
             JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
             return;

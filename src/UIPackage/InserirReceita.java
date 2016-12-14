@@ -15,11 +15,13 @@ import LogicPackage.TipoAlimentos.Leguminosas;
 import LogicPackage.TipoAlimentos.Oleos;
 import LogicPackage.TipoAlimentos.Peixe;
 import LogicPackage.TipoAlimentos.Vegetal;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -315,6 +317,7 @@ public class InserirReceita extends javax.swing.JFrame {
                 
                 File imagem = new File(nomeDirectoria + file.getName());
                 camImg = imagem.getCanonicalPath();
+                
                 if (!directoria.exists()) {
 
                     directoria.mkdir();
@@ -322,6 +325,7 @@ public class InserirReceita extends javax.swing.JFrame {
                 }else{
                     Files.copy(file.toPath(), imagem.toPath(),REPLACE_EXISTING);
                 }
+                
             } catch (IOException ex) {
                 System.out.println("Erro");
             }

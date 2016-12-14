@@ -203,7 +203,7 @@ public class LivroReceitas implements Serializable, Variables {
     /*
     *Método para editar receita
      */
-    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos, String camImg) {
         if (id < 0 || id >= receitas.size()) {
             return false;
         }
@@ -219,6 +219,7 @@ public class LivroReceitas implements Serializable, Variables {
         receitas.get(id).setNPessoas(pessoas);
         receitas.get(id).setPassos(passos);
         receitas.get(id).setcalorias();
+        receitas.get(id).setCamImg(camImg);
 
         return true;
     }

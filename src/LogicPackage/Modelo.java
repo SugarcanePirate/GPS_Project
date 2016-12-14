@@ -43,8 +43,8 @@ public class Modelo implements Variables {
         return livroReceitas.pesquisaReceitas(ingredientes);
     }
 
-    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
-        return livroReceitas.editaReceita(id, nome, ingredientes, pessoas, passos);
+    public boolean editaReceita(int id, String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos, String camImg) {
+        return livroReceitas.editaReceita(id, nome, ingredientes, pessoas, passos,camImg);
     }
 
     /*
