@@ -32,8 +32,8 @@ public class Modelo implements Variables {
     /*
     *Método para adicionar uma nova receita á lista de receitas
      */
-    public boolean adicionaReceitas(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
-        return livroReceitas.adicionaReceita(nome, ingredientes, pessoas, passos);
+    public boolean adicionaReceitas(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos, String camImg) {
+        return livroReceitas.adicionaReceita(nome, ingredientes, pessoas, passos,camImg);
     }
 
     /*

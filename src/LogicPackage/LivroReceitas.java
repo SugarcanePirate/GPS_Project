@@ -28,9 +28,9 @@ public class LivroReceitas implements Serializable, Variables {
     *Retorna false caso já exista uma receita com o mesmo nome, ou true caso
     *a receita seja adicionada
      */
-    public boolean adicionaReceita(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos) {
+    public boolean adicionaReceita(String nome, ArrayList<Ingrediente> ingredientes, int pessoas, String passos, String camImg) {
 
-        Receita receita = new Receita(nome, ingredientes, pessoas, passos);
+        Receita receita = new Receita(nome, ingredientes, pessoas, passos, camImg);
 
         for (Receita r : receitas) {
             if (r.getNome().equals(receita.getNome())) {

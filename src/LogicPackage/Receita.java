@@ -14,15 +14,33 @@ public class Receita implements Serializable {
     private int nPessoas; //nº de pessoas que a receita serve
     private int calorias; //nº de calorias da receita
     private String passos; //passos a seguir da receita
+    private String camImg;
+
+    public int getnPessoas() {
+        return nPessoas;
+    }
+
+    public void setnPessoas(int nPessoas) {
+        this.nPessoas = nPessoas;
+    }
+
+    public String getCamImg() {
+        return camImg;
+    }
+
+    public void setCamImg(String camImg) {
+        this.camImg = camImg;
+    }
 
     /*
     *Constructor da classe Receita
      */
-    public Receita(String nome, ArrayList<Ingrediente> ingredientes, int nPessoas, String passos) {
+    public Receita(String nome, ArrayList<Ingrediente> ingredientes, int nPessoas, String passos, String camImg) {
         this.nome = nome;
         this.ingredientes = ingredientes;
         this.nPessoas = nPessoas;
         this.passos = passos;
+        this.camImg = camImg;
 
         for (Ingrediente ingrediente : ingredientes) {
             calorias += ingrediente.getCalorias() * ingrediente.getQuantidade() / 100;
