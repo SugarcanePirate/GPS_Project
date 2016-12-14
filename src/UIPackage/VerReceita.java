@@ -8,13 +8,26 @@ package UIPackage;
 import LogicPackage.Ingrediente;
 import LogicPackage.Modelo;
 import LogicPackage.Receita;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class VerReceita extends javax.swing.JFrame {
 
     Modelo l;
     Receita r;
     JFrame fr;
+    JLabel im;
+    ImageIcon img;
 
     /**
      * Creates new form VerReceita
@@ -24,9 +37,42 @@ public class VerReceita extends javax.swing.JFrame {
         this.fr = fr;
         this.l = l;
         this.r = r;
+        BufferedImage myPicture;
         preenche();
+        
+        img = new ImageIcon(r.getCamImg());
+ 
+        jLabel1.setIcon(img);
+        
+//        im = new JLabel(){
+//            @Override
+//            public void paintComponent(Graphics g){
+//                super.paintComponent(g);
+//
+//                g.drawImage(getImagem(), 0,0,230,350,this);
+// 
+//                }
+//        };
+
+   
+//       imagem = new JPanel();
+//       imagem.add(im);
+//       imagem.repaint();
+       
     }
 
+    
+    public Image getImagem() {
+                  URL url=UIPackage.Resources.class.getResource(r.getCamImg());
+        try {
+            return ImageIO.read(url);
+        } catch (IOException ex) {
+            Logger.getLogger(VerReceita.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                    return null;
+    }
+    
+    
     public VerReceita() {
         initComponents();
     }
@@ -58,12 +104,12 @@ public class VerReceita extends javax.swing.JFrame {
         bVoltar = new javax.swing.JButton();
         lNPessoas = new javax.swing.JLabel();
         lIngredientes = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        eMetodoPrep = new javax.swing.JEditorPane();
         lCalorias = new javax.swing.JLabel();
         lMetodoPrep = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         taPreparacao = new javax.swing.JTextArea();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 500), new java.awt.Dimension(0, 500), new java.awt.Dimension(32767, 500));
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,8 +129,6 @@ public class VerReceita extends javax.swing.JFrame {
 
         lIngredientes.setText("Ingredientes: ");
 
-        jScrollPane1.setViewportView(eMetodoPrep);
-
         lCalorias.setText("Calorias/100g: ");
 
         lMetodoPrep.setText("Método de Preparação: ...");
@@ -93,55 +137,65 @@ public class VerReceita extends javax.swing.JFrame {
         taPreparacao.setRows(5);
         jScrollPane2.setViewportView(taPreparacao);
 
+        jLabel1.setMaximumSize(new java.awt.Dimension(350, 350));
+        jLabel1.setMinimumSize(new java.awt.Dimension(350, 350));
+        jLabel1.setPreferredSize(new java.awt.Dimension(350, 350));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(424, 424, 424)
-                .addComponent(lTitulo)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(72, 72, 72)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
+                        .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lIngredientes)
                             .addComponent(lCalorias)
                             .addComponent(lMetodoPrep, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lNPessoas)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 535, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 474, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bVoltar)))
                 .addGap(41, 41, 41))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(424, 424, 424)
+                .addComponent(lTitulo)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lTitulo)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(lTitulo)
-                        .addGap(59, 59, 59)
                         .addComponent(lNPessoas)
                         .addGap(40, 40, 40)
                         .addComponent(lIngredientes)
-                        .addGap(36, 36, 36)
+                        .addGap(38, 38, 38)
                         .addComponent(lCalorias)
                         .addGap(41, 41, 41)
                         .addComponent(lMetodoPrep)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addComponent(bVoltar)
-                .addGap(26, 26, 26))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bVoltar)
+                        .addGap(26, 26, 26))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
+        jLabel1.getAccessibleContext().setAccessibleName("jLabel1");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,7 +207,7 @@ public class VerReceita extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 633, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -202,9 +256,9 @@ public class VerReceita extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bVoltar;
-    private javax.swing.JEditorPane eMetodoPrep;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lCalorias;
     private javax.swing.JLabel lIngredientes;
