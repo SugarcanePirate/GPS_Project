@@ -39,7 +39,7 @@ public class EditarReceita extends javax.swing.JFrame {
     ArrayList<Ingrediente> ing = null;
     JFrame pr;
     final JFileChooser fc = new JFileChooser();
-    String camImg;
+    String camImg = "";
 
     /**
      * Creates new form EditarReceita
@@ -426,6 +426,8 @@ public class EditarReceita extends javax.swing.JFrame {
 
     private void bGuardarReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bGuardarReceitaActionPerformed
         if (ing.isEmpty()) {
+             JOptionPane.showMessageDialog(null, "Lista de ingredientes vazia!", "Warning",
+                    JOptionPane.WARNING_MESSAGE);
             return;
         }
         if (textFieldTituloReceita.getText().equals("") || textFieldNPessoas.getText().equals("") || testAreaMetodoDePreparacao.getText().equals("")) {
@@ -433,6 +435,7 @@ public class EditarReceita extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
         int nPessoas = 0;
 
         try {
@@ -445,7 +448,8 @@ public class EditarReceita extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             return;
         }
-
+        if(camImg.equals(""))
+            camImg=r.getCamImg();
         if (!l.editaReceita(id, textFieldTituloReceita.getText(), ing, nPessoas, testAreaMetodoDePreparacao.getText(),camImg)) {
             JOptionPane.showMessageDialog(null, "Escolha outro titulo para a receita!", "Warning",
                     JOptionPane.WARNING_MESSAGE);
