@@ -120,6 +120,7 @@ public class VerReceita extends javax.swing.JFrame {
 
         lMetodoPrep.setText("Método de Preparação: ...");
 
+        taPreparacao.setEditable(false);
         taPreparacao.setColumns(20);
         taPreparacao.setRows(5);
         jScrollPane2.setViewportView(taPreparacao);
