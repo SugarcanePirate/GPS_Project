@@ -1,11 +1,21 @@
 package UIPackage;
 
 import LogicPackage.Modelo;
+import java.awt.Image;
+import static java.awt.Image.SCALE_DEFAULT;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class MenuInicial extends javax.swing.JFrame {
 
     Modelo l;
 
+    ImageIcon img;
+   
+     
+    
     /**
      * Creates new form MenuInicial
      */
@@ -14,11 +24,33 @@ public class MenuInicial extends javax.swing.JFrame {
         l = new Modelo();
         l.criaPasta();
         l.recuperaReceitas();
+        String nomeDirectoria = System.getProperty("user.dir");
+
+        nomeDirectoria = nomeDirectoria + File.separator + "src" + File.separator + "UIPackage" + File.separator + "ImgPackage" + File.separator;
+  
+        img = new ImageIcon(nomeDirectoria+"food2.jpg");
+        Image auxImagem = img.getImage();
+        
+        auxImagem = auxImagem.getScaledInstance(255, 255, SCALE_DEFAULT);
+        img = new ImageIcon(auxImagem);
+        jLabel1.setIcon(img);
     }
 
     public MenuInicial(Modelo l) {
         initComponents();
         this.l = l;
+        
+        String nomeDirectoria = System.getProperty("user.dir");
+
+        nomeDirectoria = nomeDirectoria + File.separator + "src" + File.separator + "UIPackage" + File.separator + "ImgPackage" + File.separator;
+  
+        img = new ImageIcon(nomeDirectoria+"food2.jpg");
+        Image auxImagem = img.getImage();
+        
+        auxImagem = auxImagem.getScaledInstance(255, 255, SCALE_DEFAULT);
+        img = new ImageIcon(auxImagem);
+        jLabel1.setIcon(img);
+        
     }
 
     /**
@@ -35,6 +67,7 @@ public class MenuInicial extends javax.swing.JFrame {
         bProcurar = new javax.swing.JButton();
         bAdicionar = new javax.swing.JButton();
         lTitle = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(950, 550));
@@ -78,7 +111,10 @@ public class MenuInicial extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bProcurar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(bListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(bAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(345, 345, 345)
+                        .addComponent(jLabel1)))
                 .addContainerGap(406, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -86,7 +122,9 @@ public class MenuInicial extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addComponent(lTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 260, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addGap(20, 20, 20)
                 .addComponent(bListar)
                 .addGap(18, 18, 18)
                 .addComponent(bProcurar)
@@ -103,7 +141,7 @@ public class MenuInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -169,6 +207,7 @@ public class MenuInicial extends javax.swing.JFrame {
     private javax.swing.JButton bAdicionar;
     private javax.swing.JButton bListar;
     private javax.swing.JButton bProcurar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lTitle;
     // End of variables declaration//GEN-END:variables
